@@ -1,0 +1,96 @@
+.driver-information{
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    padding: 10px;
+    width: 40vw;
+    background-color: #FCFDFD;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.driver-information:hover,.driver-information:active{
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    background-color: #f5f7fa;
+}
+.driver-head{
+    display:flex;
+    align-items: center;
+    gap:10px;
+    font-size: 1.2rem;
+    margin: 10px;
+    font-weight: 600;
+}
+.user-icon{
+    opacity: 0.8;
+}
+.driver-main-head{
+    display: flex;
+    align-items:center;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color:#21232C;
+    margin: 5px;
+}
+.driver-data{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 3px;
+}
+.driverName{
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: black;
+    display: flex;
+    align-items: center;
+    margin: 3px;
+    padding: 2px;
+}
+.drivermobile{
+    font-size: 1rem;
+    font-weight: 350;
+    color: #21232C;
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    gap: 7.5px;
+}
+.contact{
+    font-size: 0.8rem;
+}
+.driver-right{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.driver-right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: black;
+    background-color: #F9F9FA;
+    padding: 5px;
+    border:0.8px solid #DDE0E4;
+    border-radius: 10px;
+}
+.driver-right:hover{
+    background-color: #344256;
+    color:#fff
+}
+
+.driver-right:active{
+    background-color: #344256;
+    color:#fff;
+    transition-duration: 2s;
+}
+@media(max-width:850px){
+    .driver-information{
+        width: 90vw;
+        margin: 10px auto;
+        
+    }
+}

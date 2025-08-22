@@ -1,0 +1,34 @@
+.bus-container {
+  width: 100%;
+  height: auto;
+  position: fixed;
+  bottom: -17px;   
+  left: 0;
+  z-index:9999 ;  
+}
+
+.bus-image {
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  user-select: none;
+  pointer-events: none;
+  
+}
+
+
+
+
+@media (max-width: 768px) {
+  .bus-image {
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bus-image {
+    height: 70px;
+   
+  }
+}

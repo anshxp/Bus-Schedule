@@ -1,0 +1,114 @@
+.route-bus-icon{
+    font-size: 1rem;
+    font-weight: 550;
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+.Total-buses p{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+.Total-buses{
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.griding{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: auto;
+    border: 1.2px solid #DDE0E4;
+    border-radius: 20px;
+    width: fit-content;
+}
+.list, .grid{
+    padding: 10px;
+    cursor: pointer;
+    padding-bottom: 10px;
+}
+.grid{
+    padding-bottom: 4.5px;
+    margin-right: 0px;
+    font-size: 0.2rem;
+}
+.list{
+    font-size: 0.9rem;
+    margin: 0px;
+}
+.grid.active, .list.active{
+    background-color: #435063;
+    color: #fff;
+}
+.grid.active{
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+.list.active{
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.all-buses.list{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.all-buses.grid{
+    display: grid;
+    grid-template-columns: repeat(3,minmax(250px ,1fr));
+    gap: 15px;
+}
+.bus{
+    box-sizing: border-box;
+}
+.all-buses.list .bus{
+    width: 100%;
+}
+@media(max-width:800px){
+    .all-buses.grid{
+        grid-template-columns: repeat(2,minmax(250px,1fr));
+        gap:12px
+    }
+    .stop-name.grid{
+        font-size: 0.6rem;
+    }
+    .timings.grid{
+        font-size: 0.4rem;
+    }
+}
+@media(max-width:425px){
+    .all-buses.grid{
+        grid-template-columns: repeat(1,minmax(250px,1fr));
+        gap:10px
+    }
+    .stop-name.grid{
+        font-size: 0.3rem;
+    }
+    .timings.grid{
+        font-size: 0.3rem;
+    }
+}
+
+
+.all-buses.grid .single-bus,
+.all-buses.grid .drivername,
+.all-buses.grid .driver-num,
+.all-buses.grid .total-stops {
+    font-size: 0.8rem !important;
+}
+/* 
+.all-buses.grid .busn {
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+} */
+
+/* .all-buses.grid .stop-name {
+    font-size: 1rem ;
+} */
+/* 
+.all-buses.grid .timings {
+    font-size: 0.95rem !important;
+} */

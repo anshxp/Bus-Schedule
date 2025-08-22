@@ -1,0 +1,133 @@
+.stop{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    width: 100%;
+    margin: 0px;
+    background-color: #FCFDFD;
+}
+.stop-num{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 550;
+    justify-content: center;
+    width:35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #344256;
+}
+.stop-detail{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.stop-timing{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.first,.second{
+    display: flex;
+    color: #818A98;
+    align-items: center;
+    font-size: 0.8rem;
+    gap: 4px;
+    padding: 2px;
+}
+
+.stop-name{
+    font-size: 1rem;
+    font-weight: 550;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    margin: 2px;
+}
+.shift{
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin: 0px !important;
+    font-weight: 500;
+    color: #818A98;
+}
+.clock{
+    display: flex;
+    align-items: center;
+    padding-top: 4px;
+}
+.clock-icon{
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+.time{
+    display: flex;
+    font-size: 0.95rem;
+    align-items: center;
+    margin: 0px !important;
+}
+@media(max-width:450px){
+    .stop{
+        gap:10px
+    }
+    .stop-name{
+        font-size: 0.9rem;
+        padding: 3px;
+        font-weight: 500;
+    }
+    .first,.second{
+        font-size: 0.5rem;
+        gap: 2px;
+    }
+    .shift{
+        font-size: 0.8rem;
+    }
+    .time{
+        font-size: 0.71rem;
+        display: flex;
+        align-items: center;
+        padding-top: 3px;
+    }
+    .stop-num{
+        font-size: 0.8rem;
+        width: 25px;
+        height: 25px;
+    }
+}
+@media(max-width:385px){
+    .stop{
+        gap:10px
+    }
+    .stop-name{
+        font-size: 0.85rem;
+        padding: 3px;
+        font-weight: 500;
+    }
+    .first,.second{
+        font-size: 0.4rem;
+        gap: 2px;
+        padding: 0px;
+    }
+    .shift{
+        font-size: 0.8rem;
+    }
+    .second{
+        padding-left: 20px;
+    }
+    .stop-timing{
+        display: flex;
+        gap: 0px;
+    }
+    .time{
+        font-size: 0.71rem;
+    }
+    .stop-num{
+        font-size: 0.8rem;
+        width: 25px;
+        height: 25px;
+    }
+}

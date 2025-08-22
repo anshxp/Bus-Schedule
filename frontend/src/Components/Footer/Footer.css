@@ -1,0 +1,44 @@
+.custom-footer {
+  width: 100%;
+  background-color: #ffeb3b;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px 0;
+  text-align: center;
+  border-top: 3px solid #333;
+}
+
+.custom-footer .text img {
+  max-width: 180px;
+}
+
+.custom-footer a i {
+  font-size: 1.6rem;
+  margin: 0 10px;
+  color: #222;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.custom-footer a:hover i {
+  transform: translateY(-6px) scale(1.15) rotate(-8deg);
+  color: #ff61a6;
+  text-shadow: 0 0 16px #ff61a6, 0 0 4px #fff;
+}
+
+.custom-footer .text-center-text p {
+  font-size: 16px;
+  margin-top: 12px;
+  color: #e0eafc;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 8px #2c5364;
+}
+
+@media (max-width: 768px) {
+  .custom-footer .text img {
+    max-width: 140px;
+  }
+
+  .custom-footer .text-center-text p {
+    font-size: 12px;
+  }
+}

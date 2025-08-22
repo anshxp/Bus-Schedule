@@ -1,0 +1,27 @@
+.banner{
+    background: linear-gradient(to right, #435063, #D5D8DD);
+    height: 200px;
+    width: 100vw;
+}
+.banner-heading h1{
+    font-size: 2.5rem;
+    color: #000;
+    text-align: center;
+    font-weight: 700;
+    padding-top: 60px;
+}
+.banner-subheading p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+    margin-top: 10px;
+}
+@media(max-width: 768px) {
+    .banner-heading h1 {
+        font-size: 2rem;
+    }
+    .banner-subheading p {
+        font-size: 1rem;
+    }
+}

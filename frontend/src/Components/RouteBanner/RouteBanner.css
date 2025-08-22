@@ -1,0 +1,93 @@
+.route-banner{
+    margin: 0;
+    padding: 0;
+    padding-left: 20vw;
+    padding-top: 70px;
+    display: flex;
+    background: linear-gradient(to right, #435063, #D5D8DD);
+    height: 250px;
+    width: 100vw;
+    flex-direction: column;
+}
+@media(max-width:850px){
+    .route-banner{
+        padding-left: 9vw;
+        padding-top: 50px;
+        height: 200px;
+    }
+}
+.back-button{
+    display: flex;
+    align-items:center;
+    gap:4px;
+    font-size: 1rem;
+    opacity: 0.8;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-top: 0px;
+    margin-bottom: 10px;
+    padding-bottom: 0px;
+    width: fit-content;
+    padding-right: 10px;
+}
+.back-button:hover,.back-button:focus{
+    background-color: #fff;
+    color: #21232C;
+}
+.arrow-left{
+    font-size: 0.7rem;
+    padding-bottom:0px;
+    margin: 0px;
+}
+.routebanner-bus{
+    display: flex;
+    align-items:center;
+    gap: 20px;
+}
+.routebanner-bus-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #39495F;
+    width: 55px;
+    padding-left: 10px;
+    height: 50px;
+    border-radius: 50%;
+}
+.route-bus-icon{
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.routebanner-busheadings{
+    display: flex;
+    flex-direction: column;
+}
+.back-fn{
+    margin: 5px;
+}
+.routebanner-busn{
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #21232C;
+    display: flex;
+    margin: 0px !important;
+    align-items: center;
+    justify-content: flex-start;
+}
+.routebanner-totalstops{
+    font-size: 0.7rem;
+    color: #21232C;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: fit-content;
+    padding: 0px 5px;
+    background-color: #fff;
+    border-radius: 10px;
+}

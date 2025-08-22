@@ -1,0 +1,19 @@
+
+.mt-5{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.bus-list {
+    margin-top: -20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.load{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    height: 80vh;
+}

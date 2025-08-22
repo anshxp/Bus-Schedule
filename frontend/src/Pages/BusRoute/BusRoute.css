@@ -1,0 +1,61 @@
+.load{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+    height: 80vh;
+}
+.route-stops{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    width: 40vw;
+    margin: 15px;
+    background-color: #FCFDFD;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+}
+.route-stops:hover,.route-stops:focus{
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    background-color: #f5f7fa;
+}
+.all-stops:hover,.all-stops:focus.all-stops{
+    background-color: #f5f7fa;
+}
+.stop:hover,.stop:focus{
+    background-color: #f5f7fa;
+}
+.loc-icon{
+    font-size: 1.4rem;
+    opacity: 0.8;
+}
+.busroute-stops{
+    display: flex;
+    color:#21232C;
+    align-items: center;
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin:0px 20px;
+    padding: 5px;
+    gap: 12px;
+}
+.route-heading{
+    display: flex;
+    align-items: center;
+}
+.busroute-bottom{
+    display: flex;
+    padding-left: 20vw;
+}
+@media(max-width:850px){
+    .busroute-bottom{
+        padding-left: 2vw;
+        flex-direction:column;
+    }
+    .route-stops{
+        width: 90vw;
+        margin: 10px auto;
+    }
+}

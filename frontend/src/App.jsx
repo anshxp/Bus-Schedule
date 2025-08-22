@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect,useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './Components/Navbar/Navbar.jsx';
+import Footer from './Components/Footer/Footer.jsx';
+import Search from './Pages/Search/Search.jsx';
+import Home from './Pages/Home/Home.jsx';
+import AllBuses from './Pages/AllBuses/AllBuses.jsx';
+import BusRoute from './Pages/BusRoute/BusRoute.jsx';
+import BusIntro from './Components/BusIntro/BusIntro.jsx'; 
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [darkMode, setDarkMode] = useState(()=>{
+    return localStorage.getItem("theme") === "dark";
+  });
+  const toggleDarkMode = () => {
+  setDarkMode((prev) => {
+    const newMode = !prev;
+    localStorage.setItem("theme", newMode ? "dark" : "light");
+    return newMode;
+    });
+  };
+  useEffect(()=>{
+    if(darkMode){
+      document.documentElement.classList.add("dark");
+    }
+    else{
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <BrowserRouter>
+        <div className="page-wrapper">
+          <Navbar/>
+          <BusIntro />
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/allbuses" element={<AllBuses />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/bus/:busno" element={<BusRoute />} />
+            </Routes>
+          </div>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </div>
+  );
 }
 
-export default App
+
+export default App;

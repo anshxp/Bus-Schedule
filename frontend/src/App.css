@@ -1,42 +1,212 @@
-#root {
-  max-width: 1280px;
+/* Reset some default styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Wrapper for full-page layout */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+/* Content stretches to fill available space */
+.page-wrapper > .content {
+  flex: 1;
+  padding: 20px;
+  padding-bottom: 100px; /* Add this line for footer space */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: 15px;
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Inputs */
+input, textarea, select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  width: 100%;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #007bff;
+}
+
+/* Simple container */
+.container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 15px;
+}
+
+/* Utility classes */
+.text-center {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.mt-1 { margin-top: 5px; }
+.mt-2 { margin-top: 10px; }
+.mt-3 { margin-top: 20px; }
+.mb-1 { margin-bottom: 5px; }
+.mb-2 { margin-bottom: 10px; }
+.mb-3 { margin-bottom: 20px; }
+
+.hidden { display: none; }
+
+/* Ensure container padding on mobile to prevent clipped content */
+.container, .bus-route-container, .recent-buses, .search-page, .bus-list {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Flex column wrap on smaller devices for bus list and recent buses */
+.bus-list, .recent-bus-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-x: hidden;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 600px) {
+  /* Stack bus details vertically */
+  .bus-detail {
+    flex-direction: column;
+    gap: 10px;
   }
-  to {
-    transform: rotate(360deg);
+
+  /* Reduce font size for better fit */
+  .busn {
+    font-size: 18px;
+  }
+
+  .details {
+    justify-content: flex-start;
+    width: 100%;
+    font-size: 14px;
   }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+:root {
+  --background-color: #f5f5f5;
+  --text-color: #333;
+  --primary-color: #007bff;
+  --link-hover-color: #0056b3;
+  --button-background: #007bff;
+  --button-hover-background: #0056b3;
+  --input-border-color: #ccc;
+  --input-focus-border-color: #007bff;
+  --card-background: #fff;
+  --shadow-color: rgba(0,0,0,0.1);
 }
 
-.card {
-  padding: 2em;
+.dark {
+  --background-color: #121212;
+  --text-color: #ddd;
+  --primary-color: #3399ff;
+  --link-hover-color: #66aaff;
+  --button-background: #3399ff;
+  --button-hover-background: #0066cc;
+  --input-border-color: #444;
+  --input-focus-border-color: #3399ff;
+  --card-background: #1e1e1e;
+  --shadow-color: rgba(0,0,0,0.6);
 }
 
-.read-the-docs {
-  color: #888;
+/* Apply variables */
+body, html, #root {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--primary-color);
+}
+
+a:hover,
+a:focus {
+  color: var(--link-hover-color);
+}
+
+button {
+  background-color: var(--button-background);
+  color: white;
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+button:hover,
+button:focus {
+  background-color: var(--button-hover-background);
+}
+
+input, textarea, select {
+  border: 1px solid var(--input-border-color);
+  background: var(--card-background);
+  color: var(--text-color);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--input-focus-border-color);
+  box-shadow: 0 0 5px var(--input-focus-border-color);
+  background: var(--card-background);
+  color: var(--text-color);
+}
+
+/* Card backgrounds etc. */
+.single-bus, .stop-container {
+  background-color: var(--card-background);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
 }
