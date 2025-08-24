@@ -1,44 +1,75 @@
 .custom-footer {
   width: 100%;
-  background-color: #ffeb3b;
-  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15);
-  padding: 20px 0;
+  background: linear-gradient(90deg, #ffeb3b, #ffc107);
+  box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.2);
+  padding: 25px 0 15px;
   text-align: center;
-  border-top: 3px solid #333;
+  position: relative;
 }
 
 .custom-footer .text img {
   max-width: 180px;
+  transition: transform 0.3s ease;
+}
+
+.custom-footer .text img:hover {
+  transform: scale(1.08);
 }
 
 .custom-footer a i {
-  font-size: 1.6rem;
-  margin: 0 10px;
-  color: #222;
-  transition: transform 0.3s ease, color 0.3s ease;
+  font-size: 1.8rem;
+  margin: 0 12px;
+  color: #000000;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .custom-footer a:hover i {
-  transform: translateY(-6px) scale(1.15) rotate(-8deg);
-  color: #ff61a6;
-  text-shadow: 0 0 16px #ff61a6, 0 0 4px #fff;
+  transform: translateY(-6px) scale(1.2);
+  color: hsl(234, 89%, 22%);
 }
 
 .custom-footer .text-center-text p {
-  font-size: 16px;
-  margin-top: 12px;
-  color: #e0eafc;
+  font-size: 15px;
+  margin-top: 14px;
+  color: #444;
   font-weight: 600;
   letter-spacing: 1px;
-  text-shadow: 0 1px 8px #2c5364;
+}
+
+.custom-footer .back-to-top {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background: #222;
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.custom-footer .back-to-top:hover {
+  background: #08025f;
+  transform: scale(1.2);
 }
 
 @media (max-width: 768px) {
   .custom-footer .text img {
     max-width: 140px;
+    margin-bottom: 12px;
   }
 
   .custom-footer .text-center-text p {
-    font-size: 12px;
+    font-size: 13px;
+  }
+
+  .custom-footer .back-to-top {
+    right: 50%;
+    transform: translateX(50%);
   }
 }
