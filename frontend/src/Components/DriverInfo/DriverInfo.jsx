@@ -13,7 +13,11 @@ const DriverInfo=({drivername,mobile})=>{
                         <i class="fa-classic fa-phone contact"></i>{mobile}
                     </div>
                 </div>
-                <button className="driver-right">
+                <button 
+                    className="driver-right"
+                    onClick={()=>{
+                        window.location.href=`tel:${mobile}`
+                    }}>
                     <i class="fa-solid fa-phone contact"></i>
                     <div className="call-driver">Call Driver</div>
                 </button>
