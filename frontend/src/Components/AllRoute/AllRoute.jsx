@@ -30,7 +30,7 @@ const AllRoute=({viewtype,setViewType,buses})=>{
                                 addRecentBuses(bus)
                         )}
                             bus={bus}
-                            busNumber={bus.Busno}
+                            busNumber={bus.busNo}
                             driverName={bus.DriverName}
                             mobile={bus.ContactNo}
                             totalStops={bus.stops.length}

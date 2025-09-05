@@ -1,3 +1,4 @@
+const { addbusSchema,editbusSchema } =require("../validation/busValidation");
 const validate=(req,res,next)=>{
     const query = req.query.q;
     if (!query) {
@@ -8,4 +9,26 @@ const validate=(req,res,next)=>{
     }
     next();
 }
-module.exports = { validate };
+const validateaddBus=(req,res,next)=>{
+    const {error}=addbusSchema.validate(req.body);
+    if(error){
+        return res.status(400).json({ 
+            success: false, 
+            message: error.details[0].message 
+        });
+    }
+    next();
+}
+
+const validateeditBus=(req,res,next)=>{
+    const {error}=editbusSchema.validate(req.body);
+    if(error){
+        console.log(error);
+        return res.status(400).json({ 
+            success: false, 
+            message: error.details[0].message 
+        });
+    }
+    next();
+}
+module.exports = { validate ,validateaddBus,validateeditBus};

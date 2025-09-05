@@ -1,8 +1,8 @@
 const express = require("express");
-const router=express.Router();
+const busrouter=express.Router();
 const { getAllBuses, searchBuses,OneBus } = require("../controllers/buscontrollers.js");
 const {validate}= require("../middlewares/validate.js");
-router.get("/buses", getAllBuses);
-router.get("/buses/:Busno", OneBus);
-router.get("/search", validate,searchBuses);
-module.exports = router;
+busrouter.get("/buses", getAllBuses);
+busrouter.get("/buses/:busNo", OneBus);
+busrouter.get("/search", validate,searchBuses);
+module.exports = busrouter;

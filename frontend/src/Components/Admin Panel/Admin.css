@@ -1,0 +1,152 @@
+
+/* Login Box */
+.login-container{
+    width: 100vw;
+    height: 90vh;
+}
+.login-box {
+  box-shadow: 3.5px 3.5px 7px black;
+  max-width: 400px;
+  height: 40rem;
+  margin: 60px auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  border-radius: 8px;
+  background: #fff;
+  /* box-shadow: 0px 5px 15px rgba(0,0,0,0.1); */
+}
+
+.login-icon {
+  background: #75161C;
+  color: #fff;
+  font-size: 26px;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-title {
+  margin: 10px 0 5px;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.login-subtitle {
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 300;
+  color: #444;
+}
+
+/* Inputs */
+label {
+  display: block;
+  margin: 15px 0 5px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-top: 4px;
+  border-radius: 5px;
+}
+
+.input-box input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 14px;
+  padding-left: 8px;
+}
+
+.icon {
+  color: #555;
+}
+
+.eye-icon {
+  color: #555;
+  cursor: pointer;
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #75161C !important; /* deep red background */
+  border: none;
+  color: #fff !important; /* white text for contrast */
+  font-weight: bold;
+  border-radius: 5px;
+  margin: 20px 0 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #00062B!important; /* darker shade on hover */
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  background-color: #00062B !important; /* even darker when clicked */
+  transform: translateY(0);
+}
+
+
+.btn:hover {
+  background: #1a252f;
+}
+
+/* Texts */
+.forgot-password {
+  color: #75161C;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.help-text {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+.help-text a {
+  color: #75161C;
+  text-decoration: none;
+}
+
+.input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-box input {
+  padding-left: 2.2rem; /* space for icon */
+}
+
+.icon-inside {
+  position: absolute;
+  left: 0.7rem;
+  color: #888;
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 0.7rem;
+  color: #888;
+  font-size: 1.1rem;
+  cursor: pointer;
+}

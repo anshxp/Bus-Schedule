@@ -23,7 +23,7 @@ const Search = () => {
   };
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3000/bus/buses") 
+    fetch("http://localhost:3000/buses") 
       .then(res => res.json())
       .then(data => {
         console.log("Fetched buses:", data);
@@ -39,8 +39,8 @@ const Search = () => {
     const delayDebounce = setTimeout(() => {
       if(query.trim()){
         const filtered=buses.filter(bus=>{
-          if(!bus || !bus.Busno || !bus.stops) return false;
-          const matchbusNo = bus.Busno.toString().toLowerCase().includes(query.toLowerCase());
+          if(!bus || !bus.busNo || !bus.stops) return false;
+          const matchbusNo = bus.busNo.toString().toLowerCase().includes(query.toLowerCase());
           const matchRoute = 
             Array.isArray(bus.stops) && bus.stops.some(stop =>
             stop && stop.stopName?.toLowerCase().includes(query.toLowerCase())
@@ -107,7 +107,7 @@ const Search = () => {
                 <SingleBus 
                 key={index}
                 bus={bus}
-                busNumber={bus.Busno}
+                busNumber={bus.busNo}
                 driverName={bus.DriverName}
                 mobile={bus.ContactNo}
                 totalStops={bus.stops.length}

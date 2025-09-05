@@ -55,7 +55,7 @@ const SingleBus=({bus,busNumber,driverName,mobile,totalStops,stops})=>{
                                         </div>
                                         <div className="timings">
                                             <i className="fa-solid fa-clock"></i>
-                                            {stop["1st_shift"]} || {stop["2nd_shift"]}
+                                            {stop.firstShift} || {stop.secondShift}
                                         </div>
                                 </div>
                             ))}
@@ -69,11 +69,11 @@ const SingleBus=({bus,busNumber,driverName,mobile,totalStops,stops})=>{
             <div className="first-stop">
                 <div className="left-first">
                     <i className="fa-solid fa-clock"></i>
-                     {stops[0]["1st_shift"]}
+                     {stops[0].firstShift}
                 </div>
                 <div className="right-second">
                     <i className="fa-solid fa-clock"></i>
-                     {stops[0]["2nd_shift"]}
+                     {stops[0].secondShift}
                 </div>
             </div>
         </Container>

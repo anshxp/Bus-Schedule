@@ -1,9 +1,10 @@
 .custom-footer {
   width: 100%;
-  background: linear-gradient(90deg, #F3F3F6, #6F7071);
+  background: #00062B;
   box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.2);
   padding: 25px 0 15px;
   text-align: center;
+  margin-top:auto;
   position: relative;
 }
 
@@ -17,21 +18,31 @@
 }
 
 .custom-footer a i {
-  font-size: 1.8rem;
+  background-color: #75161C;
+  font-size: 1.5rem;
   margin: 0 12px;
-  color: #000000;
+  color: #fff;
   transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+
+  /* NEW: make them round */
+  border-radius: 50%;
+  padding: 10px;          /* adjust size inside circle */
+  display: inline-flex;   /* center the icons */
+  align-items: center;
+  justify-content: center;
+  width: 40px;            /* fixed size */
+  height: 40px;
 }
 
 .custom-footer a:hover i {
   transform: translateY(-6px) scale(1.2);
-  color: hsl(234, 89%, 22%);
+  color: #ffffff;
 }
 
 .custom-footer .text-center-text p {
   font-size: 15px;
   margin-top: 14px;
-  color: #444;
+  color: #ffffff;
   font-weight: 600;
   letter-spacing: 1px;
 }
@@ -40,8 +51,8 @@
   position: absolute;
   right: 20px;
   bottom: 20px;
-  background: #222;
-  color: #fff;
+  background: #ffffff;
+  color: #00062B;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -54,7 +65,7 @@
 }
 
 .custom-footer .back-to-top:hover {
-  background: #08025f;
+  background: #75161C;
   transform: scale(1.2);
 }
 

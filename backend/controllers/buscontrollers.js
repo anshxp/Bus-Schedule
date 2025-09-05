@@ -1,15 +1,18 @@
-const data=require('../data/bus_data.js');
+const busModel=require('../models/busSchema.js')
 
-const getAllBuses = (req, res) => {
-    res.json(data);
-    // res.send("data here")
+const getAllBuses = async (req, res) => {
+    try{
+        const buses=await busModel.find({});
+        return res.json(buses);
+    }catch(err){
+        return res.status(404).send("Error occured ",err);
+    }
 };
-const OneBus=(req,res)=>{
-    console.log(req.params.Busno);
-    const busNo=parseInt(req.params.Busno);
-    const bus=data.find(b=>b.Busno===busNo);
+const OneBus= async  (req,res)=>{
+    const busNo=parseInt(req.params.busNo);
+    const bus=await busModel.findOne({busNo});
     if(!bus){
-        return res.status(404).json({message:"Bus not found"});
+        return res.status(404).json({success:false,message:"Bus not found"});
     }
     return res.json(bus);
 }
@@ -21,7 +24,7 @@ const searchBuses=(req,res)=>{
     let result=[];
     if(/^\d+$/.test(query)){
         const number = parseInt(query, 10);
-        result = data.filter(bus=>bus.Busno === number);
+        result = data.filter(bus=>bus.busNo === number);
     }
     else{
         result=data.filter(bus=>

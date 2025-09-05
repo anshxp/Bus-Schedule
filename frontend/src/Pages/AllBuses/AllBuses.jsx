@@ -12,7 +12,7 @@ const AllBuses = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:3000/bus/buses") 
+    fetch("http://localhost:3000/buses") 
       .then(res => res.json())
       .then(data => {
         console.log("Fetched buses:", data);

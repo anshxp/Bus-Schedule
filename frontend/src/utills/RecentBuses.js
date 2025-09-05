@@ -1,6 +1,6 @@
 export const addRecentBuses=(bus)=>{
     let recent =JSON.parse(localStorage.getItem("recentBuses")) || [];
-    recent=recent.filter(item=>item.Busno!== bus.Busno);
+    recent=recent.filter(item=>item.busNo!== bus.busNo);
     recent.unshift(bus);
     if(recent.length > 10) {
         recent = recent.slice(0, 10);

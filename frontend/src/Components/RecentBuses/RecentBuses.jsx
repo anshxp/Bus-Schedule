@@ -15,7 +15,7 @@ const RecentBuses=()=>{
     return(
         <div className="recent-buses-container mt-3">
             <h4 className='section-heading'>
-                <i class="fa-solid fa-clock-rotate-left"></i>
+                <i className="fa-solid fa-clock-rotate-left"></i>
                 Recent Buses Visited
             </h4>
             <p className='about-recent'>Discover the Recent routes you have visited.</p>
@@ -34,10 +34,10 @@ const RecentBuses=()=>{
                         <SingleBus 
                             onClick={()=>{
                                     addRecentBuses(bus);
-                                    navigate(`/bus/${bus.Busno}`)
+                                    navigate(`/bus/${bus.busNo}`)
                                 }}
                             bus={bus}
-                            busNumber={bus.Busno}
+                            busNumber={bus.busNo}
                             driverName={bus.DriverName}
                             mobile={bus.ContactNo}
                             totalStops={bus.stops.length}

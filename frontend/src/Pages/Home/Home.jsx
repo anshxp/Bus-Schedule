@@ -14,16 +14,6 @@ const Home = () => {
             Discover the easiest way to search and find bus routes, stops, and
             timings. <br />Your journey starts here with all the routes information.
           </p>
-
-          {/* CTA Buttons */}
-          <div className="hero-buttons">
-            <Link to="/search">
-              <button className="btn-primary">Get Started</button>
-            </Link>
-            <Link to="/allbuses">
-              <button className="btn-secondary">View All Routes</button>
-            </Link>
-          </div>
         </div>
 
         {/* Stats Section */}
@@ -32,15 +22,15 @@ const Home = () => {
             <h3>80+</h3>
             <p>Buses</p>
           </div>
-          <div className="stat-card">
+          <div className="stat-card2">
             <h3>200+</h3>
-            <p>Routes</p>
+            <p>Stops</p>
           </div>
           <div className="stat-card">
             <h3>24/7</h3>
             <p>Support</p>
           </div>
-          <div className="stat-card">
+          <div className="stat-card2">
             <h3>Route</h3>
             <p>Updates</p>
           </div>
@@ -56,7 +46,7 @@ const Home = () => {
         </p>
 
         <div className="features-grid">
-          <div className="feature-card">
+          <div className="feature-card2">
             <h4>Route Tracking</h4>
             <p>
               Track bus route and get accurate arrival predictions for
@@ -77,7 +67,7 @@ const Home = () => {
               responsive design.
             </p>
           </div>
-          <div className="feature-card">
+          <div className="feature-card2">
             <h4>Secure & Reliable</h4>
             <p>
               Your data is protected with enterprise-grade security and 99.9%

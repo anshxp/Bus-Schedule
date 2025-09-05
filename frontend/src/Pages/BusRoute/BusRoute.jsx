@@ -9,11 +9,11 @@ import RouteBanner from '../../Components/RouteBanner/RouteBanner.jsx';
 import QuickInfo from '../../Components/QuickInfo/QuickInfo.jsx';
 
 const BusRoute=()=>{
-    const { busno } = useParams();
+    const { busNo } = useParams();
     const [bus, setbus]= useState(null);
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
-        fetch(`http://localhost:3000/bus/buses/${busno}`)
+        fetch(`http://localhost:3000/buses/${busNo}`)
         .then(res=> res.json())
         .then(data=>{
             console.log("Fetched Bus:", data);
@@ -24,7 +24,7 @@ const BusRoute=()=>{
                 console.error("Error fetching bus route:", err);
                 setLoading(false);
             });
-        }, [busno])
+        }, [busNo])
     if (loading) {
         return(
             <div className="load">
@@ -33,12 +33,12 @@ const BusRoute=()=>{
         ) 
     }
     if (!bus || !bus.stops) {
-        console.log("No stops found for bus:", busno);
+        console.log("No stops found for bus:", busNo);
     }
     return (
         <div className="bus-route-container">
             <RouteBanner 
-                busNumber={busno}
+                busNumber={busNo}
                 totalstops={bus.stops.length}
             />
             <div className="busroute-bottom">
@@ -65,8 +65,8 @@ const BusRoute=()=>{
                                 className="stop-item"
                                     index={index+1}
                                     stopName={stop.stopName}
-                                    first={stop["1st_shift"] || "N/A"}
-                                    second={stop["2nd_shift"] || "N/A"}
+                                    first={stop["firstShift"] || "N/A"}
+                                    second={stop["secondShift"] || "N/A"}
                                 />
                                 </motion.div>
                             ))}
@@ -75,10 +75,10 @@ const BusRoute=()=>{
                 </div>
                 <div className="busroute-side">
                     <QuickInfo 
-                        BusNumber={busno}
+                        BusNumber={busNo}
                         totalstops={bus.stops.length}
-                        firstxfirst={bus.stops[0]?.["1st_shift"] || "N/A"}
-                        secondxfirst={bus.stops[0]?.["2nd_shift"] || "N/A"}
+                        firstxfirst={bus.stops[0]?.["firstShift"] || "N/A"}
+                        secondxfirst={bus.stops[0]?.["secondShift"] || "N/A"}
                     />
                 </div>
             </div>

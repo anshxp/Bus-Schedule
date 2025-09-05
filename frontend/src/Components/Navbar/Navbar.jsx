@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect} from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import "./Navbar.css";
@@ -6,14 +6,23 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function MyNavbar() {
   const [expanded, setExpanded] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [isAdmin,setIsAdmin]=useState(()=>!!localStorage.getItem('admintoken'));
   const navigate = useNavigate();
   const location = useLocation();
-
+  useEffect(() => {
+    setIsAdmin(!!localStorage.getItem("admintoken"));
+  }, [location]);
   const handleSearch = () => {
     setExpanded(false);
     navigate("/search");
   };
+  const handleLogout=()=>{
+    fetch('http://localhost:3000/logout',{method:"POST",credentials:'include'}).then(()=>{
+      localStorage.removeItem('admintoken');
+      setIsAdmin(false);
+      navigate('/');
+    })
+  }
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -68,11 +77,9 @@ function MyNavbar() {
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-
-        {/* Dark Mode Toggle (Minimal) */}
-        <button className="dark-mode-toggle" onClick={toggleDarkMode}>
-          <i className={darkMode ? "fa-solid fa-moon" : "fa-solid fa-sun"}></i>
-        </button>
+        {isAdmin && (
+          <button className='btn btn-danger' onClick={handleLogout}>Log Out</button>
+        )}
       </Container>
     </Navbar>
   );

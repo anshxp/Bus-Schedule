@@ -5,6 +5,7 @@ import Footer from './Components/Footer/Footer.jsx';
 import Search from './Pages/Search/Search.jsx';
 import Home from './Pages/Home/Home.jsx';
 import AllBuses from './Pages/AllBuses/AllBuses.jsx';
+import Admin from './Pages/Admin/Admin.jsx'
 import BusRoute from './Pages/BusRoute/BusRoute.jsx';
 import BusIntro from './Components/BusIntro/BusIntro.jsx'; 
 
@@ -38,7 +39,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/allbuses" element={<AllBuses />} />
               <Route path="/search" element={<Search />} />
-              <Route path="/bus/:busno" element={<BusRoute />} />
+              <Route path="/bus/:busNo" element={<BusRoute />} />
+              <Route path="/admin" element={<Admin />} />
             </Routes>
           </div>
           <Footer />

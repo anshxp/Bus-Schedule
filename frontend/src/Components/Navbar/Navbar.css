@@ -38,12 +38,14 @@ body {
   bottom: -6px;
   width: 0%;
   height: 2px;
-  background: #00aaff;
+  background: #75161C;
   transition: width 0.3s ease;
 }
-
+.btn{
+  width: 6rem !important;
+}
 .custom-navbar .nav-link:hover {
-  color: #00aaff !important;
+  color: #75161C !important;
 }
 
 .custom-navbar .nav-link:hover::after,
@@ -58,11 +60,11 @@ body {
 
 .custom-navbar .nav-link:hover i {
   transform: translateY(-3px) scale(1.1);
-  color: #00aaff;
+  color: #75161C;
 }
 
 .custom-navbar .active-link {
-  color: #00aaff !important;
+  color: #75161C !important;
 }
 
 /* Minimal Dark Mode Toggle */
@@ -71,18 +73,18 @@ body {
   border: none;
   font-size: 1.05rem;
   cursor: pointer;
-  color: #444;
+  color: #000000;
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .dark-mode-toggle:hover {
-  color: #444;
+  color: #000000;
   transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
   .custom-navbar {
-    background: rgba(255, 255, 255, 0.95);
+    background: #fff;
   }
 
   .custom-navbar .nav-link {

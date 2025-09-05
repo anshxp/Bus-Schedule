@@ -28,28 +28,28 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i className="fa-brands fa-square-twitter"></i>
+             <i className="fa-brands fa-twitter"></i>
             </a>
             <a
               href="https://www.linkedin.com/school/acropolis-institutions/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i className="fa-brands fa-square-linkedin"></i>
+              <i className ="fa-brands fa-linkedin-in"></i>
             </a>
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i className="fa-brands fa-square-instagram"></i>
+              <i className="fa-brands fa-instagram"></i>
             </a>
             <a
               href="https://www.facebook.com/AcropolisCollegeIndore/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i className="fa-brands fa-square-facebook"></i>
+              <i className="fa-brands fa-facebook-f"></i>
             </a>
           </Col>
 

@@ -1,6 +1,6 @@
 /* General page styling */
 .home-wrapper {
-  background: linear-gradient(135deg, #505152, #f9f9fb);
+  background: #FFFFFF;
   min-height: 100vh;
   padding: 80px 20px 40px;
   font-family: "Segoe UI", sans-serif;
@@ -75,32 +75,6 @@
   transform: translateY(-2px);
 }
 
-/* Hero Buttons */
-.hero-buttons {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-}
-
-.btn-primary,
-.btn-secondary {
-  padding: 12px 22px;
-  border: none;
-  border-radius: 8px;
-  background: #2c3e50;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover,
-.btn-secondary:hover {
-  background: #00aaff;
-  color: #fff;
-  transform: translateY(-3px) scale(1.05);
-}
-
 /* Stats Section */
 .hero-stats {
   display: grid;
@@ -112,7 +86,16 @@
 }
 
 .stat-card {
-  background: #fff;
+  background: #00062B;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card2 {
+  background: #75161C;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -125,18 +108,34 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
+.stat-card2:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
 .stat-card h3 {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #0077b6;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.stat-card2 h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
   margin-bottom: 6px;
 }
 
 .stat-card p {
   font-size: 0.95rem;
-  color: #555;
+  color: #ffffff;
 }
 
+.stat-card2 p {
+  font-size: 0.95rem;
+  color: #ffffff;
+}
 /* Features Section */
 .features-section {
   margin-top: 60px;
@@ -168,7 +167,16 @@
 }
 
 .feature-card {
-  background: #fff;
+  background: #00062B;
+  padding: 35px; /* Bigger box size */
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: left;
+}
+
+.feature-card2 {
+  background: #75161C;
   padding: 35px; /* Bigger box size */
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -180,12 +188,25 @@
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 12px;
-  color: #0077b6;
+  color: #ffffff;
 }
 
 .feature-card p {
   font-size: 1rem;
-  color: #444;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.feature-card2 h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffffff;
+}
+
+.feature-card2 p {
+  font-size: 1rem;
+  color: #ffffff;
   line-height: 1.6;
 }
 
