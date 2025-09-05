@@ -8,6 +8,7 @@ import AllBuses from './Pages/AllBuses/AllBuses.jsx';
 import Admin from './Pages/Admin/Admin.jsx'
 import BusRoute from './Pages/BusRoute/BusRoute.jsx';
 import BusIntro from './Components/BusIntro/BusIntro.jsx'; 
+import AddBus from './Pages/AddBus/AddBus.jsx';
 
 function App() {
   const [darkMode, setDarkMode] = useState(()=>{
@@ -41,6 +42,7 @@ function App() {
               <Route path="/search" element={<Search />} />
               <Route path="/bus/:busNo" element={<BusRoute />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/addbus" element={<AddBus />} />
             </Routes>
           </div>
           <Footer />

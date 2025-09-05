@@ -43,6 +43,7 @@ body {
 }
 .btn{
   width: 6rem !important;
+  margin: 0rem 2rem !important;
 }
 .custom-navbar .nav-link:hover {
   color: #75161C !important;

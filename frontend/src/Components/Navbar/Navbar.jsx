@@ -78,6 +78,9 @@ function MyNavbar() {
           </Nav>
         </Navbar.Collapse>
         {isAdmin && (
+          <button className='btn ' onClick={handleLogout}>Add Bus</button>
+        )}
+        {isAdmin && (
           <button className='btn btn-danger' onClick={handleLogout}>Log Out</button>
         )}
       </Container>

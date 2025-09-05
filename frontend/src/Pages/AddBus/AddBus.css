@@ -1,0 +1,215 @@
+.AddBus{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.AddBus-form{
+    margin: 3rem 0rem;
+    display: flex;
+    width: 600px;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem 0rem;
+}
+form{
+    width: 100%;
+}
+.AddBus-BusInfo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius:40px;
+    padding: 1rem 0rem;
+    margin: 1rem 0rem;
+}
+.AddBus-BusInfo-heading{
+    color: #21232C;
+    font-size: 1.55rem;
+    font-weight: 550;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+label{
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 4px 0px;
+}
+input{
+    height: 2rem;
+    padding: 5px;
+}
+input::placeholder{
+    font-size: 0.9rem;
+}
+.AddBus-DriverInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius:40px;
+    padding: 1rem 0rem;
+    margin: 1rem 0rem;
+}
+.AddBus-DriverInfo-heading{
+    font-size: 1.55rem;
+    color:#21232C;
+    font-weight: 550;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 0px;
+}
+.AddBus-RouteInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius:40px;
+    padding: 1rem 0rem;
+    margin: 1rem 0rem;
+    margin-bottom: 0rem;
+    padding-bottom: 0rem;
+}
+.AddBus-RouteInfo-heading{
+    display: flex;
+    color: #21232C;
+    font-size: 1.55rem;
+    font-weight: 550;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+}
+.AddStop-button{
+    font-size: 0.9rem;
+    padding: 4px;
+    cursor: pointer;
+    font-weight: 400;
+    border-radius: 10px;
+    color: #696A71;
+    border: 0.01px solid #696A71;
+}
+.AddStop-button:hover,.AddStop-button:focus{
+    background-color: #75161C;
+    color: white;
+}
+.stop-box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 20px;
+    border: 1px solid #696A71;
+    padding: 15px;
+    margin: 1rem 0rem;
+}
+.stop-detail{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.stop-timings{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+h3{
+    margin: 0px !important;
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+}
+.stopName{
+    margin: 0px;
+}
+.stop-header{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+.remove-btn{
+    background-color: #75161C;
+    font-size: 1rem;
+    width: 1.5rem;
+    height: 1.7rem;
+    padding: 0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-actions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 1rem;
+    margin: 0rem 1rem;
+}
+.submit-btn{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #75161C;
+    border-radius:10px ;
+    padding: 5px 10px;
+}
+.cancel-btn{
+    display:flex;
+    align-items: center;
+    color: black;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid black;
+    border-radius:10px ;
+    padding: 5px 10px;
+
+}
+.settype{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+.type{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    left: 0px;
+    font-size: 1.2rem;
+    font-weight: 550;
+    gap: 3rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 1rem;
+    width: 50%;
+}
+.isActive{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    width: 50%;
+    font-size: 1.2rem;
+    font-weight: 550;
+    gap: 3rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 1rem;
+    width: 20rem;
+}
+input[type="checkbox"]{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0.5);
+    color: #75161C;
+    background-color: #75161C;
+    border-color: #75161C;
+    font-size: 0.5rem;
+}
