@@ -1,5 +1,5 @@
 .search-page {
-  background:linear-gradient(to right, #435063, #D5D8DD);
+  background:linear-gradient(to right, #00062B, #D5D8DD);
   height: 300px;
   width: 100vw;
   text-align: center;
@@ -8,7 +8,7 @@
 
 .banner-heading h1{
     font-size: 2.5rem;
-    color: #000;
+    color: #fff;
     text-align: center;
     font-weight: 700;
     padding-top: 60px;
@@ -58,6 +58,7 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
+  height: 1.5rem !important;
 }
 
 .search-btn {

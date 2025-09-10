@@ -2,6 +2,8 @@ const dataBuses=[
     {
         "busNo" :54,
         "DriverName":"Shri Rajendra Rathor",
+        "type":"permanent",
+        "isActive":true,
         "ContactNo":9165959942,
         "stops":[
             {
@@ -89,6 +91,8 @@ const dataBuses=[
     {
         "busNo" :4,
         "DriverName":"Shri Mukesh Malviya",
+        "type":"permanent",
+        "isActive":true,
         "ContactNo":1,
         "stops":[
             {
@@ -171,6 +175,8 @@ const dataBuses=[
     {
         "busNo" :5,
         "DriverName":"Shri Deepak Rathore",
+        "type":"permanent",
+        "isActive":true,
         "ContactNo":8349188345,
         "stops":[
             {
@@ -243,6 +249,8 @@ const dataBuses=[
     {
         "busNo" :39,
         "DriverName":"Shri Sanjay Dwivedi",
+        "type":"permanent",
+        "isActive":true,
         "ContactNo":9425953756,
         "stops":[
             {
@@ -365,6 +373,8 @@ const dataBuses=[
     {
         "busNo" :9,
         "DriverName":"Shri Onkarlal Choudhary",
+        "type":"permanent",
+        "isActive":true,
         "ContactNo":7869852937,
         "stops":[
             {
@@ -442,6 +452,8 @@ const dataBuses=[
     {
         "busNo" :72,
         "DriverName":"Shri Dhannalal Makwana",
+        "type":"permanent",
+        "isActive":true,
         "ContactNo":9009777457,
         "stops":[
             {
@@ -515,6 +527,8 @@ const dataBuses=[
     {
         "busNo": 17, // replace with actual bus number from driver list
         "DriverName": "Shri Jitendra Giri", // replace with exact driver name
+        "type":"permanent",
+        "isActive":true,
         "ContactNo": 8889131347, // replace if contact is listed
         "stops": [
             { "stopName": "Shiv City (Start)", "firstShift": "7:15 AM", "secondShift": "9:15 AM" },
@@ -535,6 +549,8 @@ const dataBuses=[
     {
         "busNo": 1,
         "DriverName": "Shri Jeevan Thakur",
+        "type":"permanent",
+        "isActive":true,
         "ContactNo": 9754570028,
         "stops": [
             { "stopName": "Kampel (Start)", "firstShift": "7:00 AM", "secondShift": null },
@@ -545,7 +561,7 @@ const dataBuses=[
     {
         "busNo": 51,
         "DriverName": "Shri Pravin Yadav",
-        "ContactNo": 9009491009,
+        "type":"permanent","isActive":true,"ContactNo": 9009491009,
         "stops": [
             { "stopName": "Indorama", "firstShift": "6:15 AM", "secondShift": "8:15 AM" },
             { "stopName": "Sagar Kuti", "firstShift": "6:20 AM", "secondShift": "8:20 AM" },
@@ -563,7 +579,7 @@ const dataBuses=[
     {
         "busNo": 8,
         "DriverName": "Shri Rohit Solanki",
-        "ContactNo": 9144912556,
+        "type":"permanent","isActive":true,"ContactNo": 9144912556,
         "stops": [
             { "stopName": "Dreamland (Start)", "firstShift": "6:40 AM", "secondShift": "8:40 AM" },
             { "stopName": "Hotel Shyam Vilas", "firstShift": "6:42 AM", "secondShift": "8:42 AM" },
@@ -577,7 +593,7 @@ const dataBuses=[
     {
         "busNo": 55,
         "DriverName": "Shri Santosh Tawar",
-        "ContactNo": 7389721434,
+        "type":"permanent","isActive":true,"ContactNo": 7389721434,
         "stops": [
             { "stopName": "( Mhow Naka Start )", "firstShift": "7:10 AM", "secondShift": "9:10 AM" },
             { "stopName": "Sachidnand Nagar", "firstShift": "7:10 AM", "secondShift": "9:10 AM" },
@@ -601,7 +617,7 @@ const dataBuses=[
     {
         "busNo": 57,
         "DriverName": "Shri Jeevan Chavda",
-        "ContactNo": 7770956715,
+        "type":"permanent","isActive":true,"ContactNo": 7770956715,
         "stops": [
             { "stopName": "Chanankya Puri Chouraha (Start)", "firstShift": "7:15 AM", "secondShift": "9:15 AM" },
             { "stopName": "Vaishali Nagar Chouraha", "firstShift": "7:16 AM", "secondShift": "9:16 AM" },
@@ -626,7 +642,7 @@ const dataBuses=[
     {
         "busNo": 78,
         "DriverName": "Shri Raju Jadhav",
-        "ContactNo": 8839435254,
+        "type":"permanent","isActive":true,"ContactNo": 8839435254,
         "stops": [
             { "stopName": "Gandhi Nagar (Start)", "firstShift": "7:00 AM", "secondShift": "9:00 AM" },
             { "stopName": "60 Ft. Road", "firstShift": "7:10 AM", "secondShift": "9:10 AM" },
@@ -639,7 +655,7 @@ const dataBuses=[
     {
         "busNo": 56,
         "DriverName": "Shri Gajju Limanpure",
-        "ContactNo": 7389869292,
+        "type":"permanent","isActive":true,"ContactNo": 7389869292,
         "stops": [
             { "stopName": "Hatod (Start)", "firstShift": "6:55 AM", "secondShift": null },
             { "stopName": "Gandhi Nagar (Start)", "firstShift": "7:05 AM", "secondShift": "9:05 AM" },
@@ -657,7 +673,7 @@ const dataBuses=[
     {
         "busNo": 3,
         "DriverName": "Shri Jitendra Kelwa",
-        "ContactNo": 9926454445,
+        "type":"permanent","isActive":true,"ContactNo": 9926454445,
         "stops": [
             { "stopName": "Vaishnav Polytechnic College MOG Lines (Start)", "firstShift": "7:30 AM", "secondShift": "9:30 AM" },
             { "stopName": "Gangwal Bus Stand (Square)", "firstShift": "7:32 AM", "secondShift": "9:32 AM" },
@@ -677,7 +693,7 @@ const dataBuses=[
     {
         "busNo": 2,
         "DriverName": "Shri Lakhan Thakur",
-        "ContactNo": 9977784697,
+        "type":"permanent","isActive":true,"ContactNo": 9977784697,
         "stops": [
             { "stopName": "Paliya Station (Start)", "firstShift": "7:05", "secondShift": "9:05" },
             { "stopName": "Aurbindo Hospital", "firstShift": "7:10", "secondShift": "9:10" },
@@ -696,7 +712,7 @@ const dataBuses=[
     {
         "busNo": 21,
         "DriverName": "Shri Meharban Makwana",
-        "ContactNo": 9926955625,
+        "type":"permanent","isActive":true,"ContactNo": 9926955625,
         "stops": [
             { "stopName": "Divya Vihar Colony (Start)", "firstShift": "7:15", "secondShift": "9:15" },
             { "stopName": "Lavkush Chouraha", "firstShift": "7:20", "secondShift": "9:20" },
@@ -714,7 +730,7 @@ const dataBuses=[
     {
         "busNo": 35,
         "DriverName": "Shri Dinesh Makwana",
-        "ContactNo": 9753364275,
+        "type":"permanent","isActive":true,"ContactNo": 9753364275,
         "stops": [
             { "stopName": "Maruti Nagar Chouraha (start)", "firstShift": "7:20", "secondShift": "9:20" },
             { "stopName": "ITI Back Side", "firstShift": "7:21", "secondShift": "9:21" },
@@ -734,7 +750,7 @@ const dataBuses=[
     {
         "busNo": 77,
         "DriverName": "Shri Rahul Thakur",
-        "ContactNo": 6265440827,
+        "type":"permanent","isActive":true,"ContactNo": 6265440827,
         "stops": [
             { "stopName": "Niranjanpur Chouraha (Start)", "firstShift": "7:20", "secondShift": "9:20" },
             { "stopName": "Nakshatra Garden", "firstShift": "7:25", "secondShift": "9:25" },
@@ -755,7 +771,7 @@ const dataBuses=[
     {
         "busNo": 6,
         "DriverName": "Shri Rajendra Singh Rathod",
-        "ContactNo": 9165959942,
+        "type":"permanent","isActive":true,"ContactNo": 9165959941,
         "stops": [
             { "stopName": "Ashish Nursing Home (Start)", "firstShift": "7:40", "secondShift": "9:40" },
             { "stopName": "Scheme No. 74 Main Road", "firstShift": "7:42", "secondShift": "9:42" },
@@ -771,7 +787,7 @@ const dataBuses=[
     {
         "busNo": 62,
         "DriverName": "Shri Ranjeet Patel",
-        "ContactNo": 9977893010,
+        "type":"permanent","isActive":true,"ContactNo": 9977893010,
         "stops": [
             { "stopName": "Sun City (Start)", "firstShift": "7:20", "secondShift": "9:20" },
             { "stopName": "County Park", "firstShift": "7:23", "secondShift": "9:23" },
@@ -793,7 +809,7 @@ const dataBuses=[
     {
         "busNo": 70,
         "DriverName": "Shri Lalji Malviya",
-        "ContactNo": 9826061693,
+        "type":"permanent","isActive":true,"ContactNo": 9826061693,
         "stops": [
             { "stopName": "Bhandari Bridge Thana (Start)", "firstShift": "7:25", "secondShift": "9:25" },
             { "stopName": "Subhash Nagar", "firstShift": "7:28", "secondShift": "9:28" },
@@ -810,7 +826,7 @@ const dataBuses=[
     {
         "busNo": 42,
         "DriverName": "Shri Chintu Parmar",
-        "ContactNo": 9522352707,
+        "type":"permanent","isActive":true,"ContactNo": 9522352707,
         "stops": [
             { "stopName": "Bhamori Plaza (Start)", "firstShift": "7:25", "secondShift": "9:25" },
             { "stopName": "Astha Talkies", "firstShift": "7:27", "secondShift": "9:27" },
@@ -828,7 +844,7 @@ const dataBuses=[
     {
         "busNo": 73,
         "DriverName": "Shri Nirmal Makwana",
-        "ContactNo": 9755718946,
+        "type":"permanent","isActive":true,"ContactNo": 9755718946,
         "stops": [
             { "stopName": "LIG Square (Start)", "firstShift": "7:40", "secondShift": "9:40" },
             { "stopName": "Press Complex", "firstShift": "7:42", "secondShift": "9:42" },
@@ -843,7 +859,7 @@ const dataBuses=[
     {
         "busNo": 32,
         "DriverName": "Shri Mohan Silawat",
-        "ContactNo": 9826463595,
+        "type":"permanent","isActive":true,"ContactNo": 9826463595,
         "stops": [
             { "stopName": "Navlakha Bus Stand (Start)", "firstShift": "7:15", "secondShift": "9:15" },
             { "stopName": "GPO Chouraha Petrol Pump", "firstShift": "7:18", "secondShift": "9:18" },
@@ -864,7 +880,7 @@ const dataBuses=[
     {
         "busNo": 71,
         "DriverName": "Shri Jagdish Jatwa",
-        "ContactNo": 9826076397,
+        "type":"permanent","isActive":true,"ContactNo": 9826076397,
         "stops": [
             { "stopName": "St. Paul School (Start)", "firstShift": "7:20", "secondShift": "9:20" },
             { "stopName": "Shivaji Vatika", "firstShift": "7:23", "secondShift": "9:23" },
@@ -885,7 +901,7 @@ const dataBuses=[
     {
         "busNo": 7,
         "DriverName": "Shri Akhilesh Patel",
-        "ContactNo": 9754401108,
+        "type":"permanent","isActive":true,"ContactNo": 9754401108,
         "stops": [
             { "stopName": "Kanadiya Village (Start)", "firstShift": "7:15", "secondShift": "9:15" },
             { "stopName": "Bengali Chouraha", "firstShift": "7:38", "secondShift": "9:38" },
@@ -900,7 +916,7 @@ const dataBuses=[
     {
         "busNo": 16,
         "DriverName": "Shri Arjun Choudhary",
-        "ContactNo": 9752057319,
+        "type":"permanent","isActive":true,"ContactNo": 9752057319,
         "stops": [
             { "stopName": "Tilak Nagar Jain Mandir (Start)", "firstShift": "7:40", "secondShift": "9:40" },
             { "stopName": "Mahavir Nagar", "firstShift": "7:42", "secondShift": "9:42" },
@@ -915,7 +931,7 @@ const dataBuses=[
     {
         "busNo": 19,
         "DriverName": "Shri Anil Choudhary",
-        "ContactNo": 9826274384,
+        "type":"permanent","isActive":true,"ContactNo": 9826274384,
         "stops": [
             { "stopName": "Telephone Nagar Tempo Stand (Start)", "firstShift": "7:45", "secondShift": "9:45" },
             { "stopName": "Mahavir Nagar", "firstShift": "7:41", "secondShift": "9:41" },
@@ -930,7 +946,7 @@ const dataBuses=[
     {
         "busNo": 41,
         "DriverName": "Shri Ishtikhar Hussain",
-        "ContactNo": 9009921786,
+        "type":"permanent","isActive":true,"ContactNo": 9009921786,
         "stops": [
             { "stopName": "Jhinsi Chouraha (Start)", "firstShift": "7:10", "secondShift": "9:10" },
             { "stopName": "Neelkanth Colony Chouraha (Badwani Chowki)", "firstShift": "7:10", "secondShift": "9:10" },
@@ -956,7 +972,7 @@ const dataBuses=[
     {
         "busNo": 38,
         "DriverName": "Shri Rajesh Nagar",
-        "ContactNo": 9630337359,
+        "type":"permanent","isActive":true,"ContactNo": 9630337359,
         "stops": [
             { "stopName": "Vallabh Nagar (Start)", "firstShift": "7:25", "secondShift": "9:25" },
             { "stopName": "Regal Chouraha", "firstShift": "7:30", "secondShift": "9:30" },
@@ -977,7 +993,7 @@ const dataBuses=[
     {
         "busNo": 69,
         "DriverName": "Shri Ramchandra Baloniya",
-        "ContactNo": 9827516766,
+        "type":"permanent","isActive":true,"ContactNo": 9827516766,
         "stops": [
             { "stopName": "Palsikar Chouraha (Start)", "firstShift": "7:20", "secondShift": "9:20" },
             { "stopName": "Manik Bagh Bridge", "firstShift": "7:22", "secondShift": "9:22" },
@@ -998,7 +1014,7 @@ const dataBuses=[
     {
         "busNo": 33,
         "DriverName": "Shri Arun Malviya",
-        "ContactNo": 8963975628,
+        "type":"permanent","isActive":true,"ContactNo": 8963975628,
         "stops": [
             { "stopName": "Six Bunglow Sitla Mata Mandir (Start)", "firstShift": "7:15", "secondShift": "9:15" },
             { "stopName": "Reliance Fresh Manik Bagh", "firstShift": "7:17", "secondShift": "9:17" },
@@ -1014,7 +1030,7 @@ const dataBuses=[
     {
         "busNo": 31,
         "DriverName": "Shri Shankar Patel",
-        "ContactNo": 9111647416,
+        "type":"permanent","isActive":true,"ContactNo": 9111647416,
         "stops": [
             { "stopName": "Nagda (Start)", "firstShift": "7:00", "secondShift": "9:00" },
             { "stopName": "Pal Nagar", "firstShift": "7:10", "secondShift": "9:10" },
@@ -1036,7 +1052,7 @@ const dataBuses=[
     {
         "busNo": 27,
         "DriverName": "Shri Govardhan Parmar",
-        "ContactNo": 8349260504,
+        "type":"permanent","isActive":true,"ContactNo": 8349260504,
         "stops": [
             { "stopName": "Bada Nagda (Start)", "firstShift": "6:30", "secondShift": "8:30" },
             { "stopName": "Pal Nagar", "firstShift": "6:50", "secondShift": "8:50" },
@@ -1059,9 +1075,9 @@ const dataBuses=[
         ]
     },
     {
-        "busNo": 0,
+        "busNo": 999,
         "DriverName": "Shri Arshad Ali",
-        "ContactNo": 9039345217,
+        "type":"permanent","isActive":true,"ContactNo": 9039345217,
         "stops": [
             { "stopName": "Nagukhedi (Start)", "firstShift": "7:10", "secondShift": "9:10" },
             { "stopName": "Kamla Nagar", "firstShift": "7:12", "secondShift": "9:12" },
@@ -1088,7 +1104,7 @@ const dataBuses=[
     {
         "busNo": 45,
         "DriverName": "Shri Azmat Ali",
-        "ContactNo": 9893493872,
+        "type":"permanent","isActive":true,"ContactNo": 9893493872,
         "stops": [
             { "stopName": "Bima chouraha (Start)", "firstShift": "7:18", "secondShift": "9:18" },
             { "stopName": "Saraswati School", "firstShift": "7:23", "secondShift": "9:23" },
@@ -1103,7 +1119,7 @@ const dataBuses=[
     {
         "busNo": 28,
         "DriverName": "Shri Reetooraj Solanki",
-        "ContactNo": 6260581901,
+        "type":"permanent","isActive":true,"ContactNo": 6260581901,
         "stops": [
             { "stopName": "Datana (Start)", "firstShift": "6:35", "secondShift": "8:35" },
             { "stopName": "Semliya Phata", "firstShift": "6:40", "secondShift": "8:40" },
@@ -1138,7 +1154,7 @@ const dataBuses=[
     {
         "busNo": 49,
         "DriverName": "Shri Ramesh Rawat",
-        "ContactNo": 7869885313,
+        "type":"permanent","isActive":true,"ContactNo": 7869885313,
         "stops": [
             { "stopName": "Barotha Village (Start)", "firstShift": "6:50", "secondShift": "8:50" },
             { "stopName": "Siroliya", "firstShift": "7:00", "secondShift": "9:00" },
@@ -1174,7 +1190,7 @@ const dataBuses=[
     {
         "busNo": 48,
         "DriverName": "Shri Dinesh Patel",
-        "ContactNo": 9669392823,
+        "type":"permanent","isActive":true,"ContactNo": 9669392823,
         "stops": [
             { "stopName": "Chidawat (Start)", "firstShift": "6:50", "secondShift": "8:50" },
             { "stopName": "Bilawali (Doodh Dairy)", "firstShift": "7:00", "secondShift": "9:00" },
@@ -1209,7 +1225,7 @@ const dataBuses=[
     {
         "busNo": 44,
         "DriverName": "Shri Om Prakash Choudhary",
-        "ContactNo": 9755847143,
+        "type":"permanent","isActive":true,"ContactNo": 9755847143,
         "stops": [
             { "stopName": "Radhaganj", "firstShift": "7:20", "secondShift": "9:20" },
             { "stopName": "Ram Rahim", "firstShift": "7:22", "secondShift": "9:22" },
@@ -1232,7 +1248,7 @@ const dataBuses=[
     {
         "busNo": 64,
         "DriverName": "Shri Mukesh Patel",
-        "ContactNo": 9977605624,
+        "type":"permanent","isActive":true,"ContactNo": 9977605624,
         "stops": [
             { "stopName": "Maksi (Start)", "firstShift": "6:00", "secondShift": "8:00" },
             { "stopName": "Jalapura", "firstShift": "6:20", "secondShift": "8:20" },
@@ -1250,7 +1266,7 @@ const dataBuses=[
     {
         "busNo": 58,
         "DriverName": "Shri Balkrishna Choudhary",
-        "ContactNo": 7828183492,
+        "type":"permanent","isActive":true,"ContactNo": 7828183492,
         "stops": [
             { "stopName": "Maksi (Start)", "firstShift": "6:00", "secondShift": "8:00" },
             { "stopName": "Jalapura", "firstShift": "6:20", "secondShift": "8:20" },
@@ -1268,7 +1284,7 @@ const dataBuses=[
     {
         "busNo": 52,
         "DriverName": "Shri Rajarm Polaya",
-        "ContactNo": 9826199542,
+        "type":"permanent","isActive":true,"ContactNo": 9826199542,
         "stops": [
             { "stopName": "Maksi (Start)", "firstShift": "6:00", "secondShift": "8:00" },
             { "stopName": "Jalapura", "firstShift": "6:20", "secondShift": "8:20" },
@@ -1286,7 +1302,7 @@ const dataBuses=[
     {
         "busNo": 68,
         "DriverName": "Shri Yusuf Patel",
-        "ContactNo": 9165252812,
+        "type":"permanent","isActive":true,"ContactNo": 9165252812,
         "stops": [
             { "stopName": "Gandharwpuri", "firstShift": "6:10", "secondShift": "null" },
             { "stopName": "Gandharwpuri Fata", "firstShift": "6:30", "secondShift": "8:30" },
@@ -1307,7 +1323,7 @@ const dataBuses=[
     {
         "busNo": 53,
         "DriverName": "Shri Maksud Khan",
-        "ContactNo": 9893621989,
+        "type":"permanent","isActive":true,"ContactNo": 9893621989,
         "stops": [
             { "stopName": "Beema Hospital Agar Road Ujjain (Start)", "firstShift": "6:20", "secondShift": "8:20" },
             { "stopName": "Chamunda Mata Mandir (Near Indore Gate)", "firstShift": "6:30", "secondShift": "8:30" },
@@ -1330,7 +1346,7 @@ const dataBuses=[
     {
         "busNo": 15,
         "DriverName": "Shri Ashok Rathod",
-        "ContactNo": 9993904141,
+        "type":"permanent","isActive":true,"ContactNo": 9993904141,
         "stops": [
             { "stopName": "Beema Hospital Agar Road Ujjain (Start)", "firstShift": "6:20", "secondShift": "8:20" },
             { "stopName": "Chamunda Mata Mandir (Near Indore Gate)", "firstShift": "6:30", "secondShift": "8:30" },
@@ -1353,7 +1369,7 @@ const dataBuses=[
     {
         "busNo": 66,
         "DriverName": "Shri Sanjay Makwana",
-        "ContactNo": 9685311199,
+        "type":"permanent","isActive":true,"ContactNo": 9685311199,
         "stops": [
             { "stopName": "Beema Hospital Agar Road Ujjain (Start)", "firstShift": "6:20", "secondShift": "8:20" },
             { "stopName": "Chamunda Mata Mandir (Near Indore Gate)", "firstShift": "6:30", "secondShift": "8:30" },
@@ -1376,7 +1392,7 @@ const dataBuses=[
     {
         "busNo": 25,
         "DriverName": "Shri Deepak Patel",
-        "ContactNo": 9098074135,
+        "type":"permanent","isActive":true,"ContactNo": 9098074135,
         "stops": [
             { "stopName": "Chapri (Kshipra)", "firstShift": "7:10", "secondShift": "9:10" },
             { "stopName": "Tigariya Chota", "firstShift": "7:20", "secondShift": "9:20" },
@@ -1393,7 +1409,7 @@ const dataBuses=[
     {
         "busNo": 43,
         "DriverName": "Shri Babulal Patel",
-        "ContactNo": 9754638615,
+        "type":"permanent","isActive":true,"ContactNo": 9754638615,
         "stops": [
             { "stopName": "Dakachya", "firstShift": "7:30", "secondShift": "9:30" },
             { "stopName": "Salotia", "firstShift": "7:35", "secondShift": "9:35" },
@@ -1415,7 +1431,7 @@ const dataBuses=[
     {
         "busNo": 10,
         "DriverName": "Shri Chaganlal",
-        "ContactNo": 7489674939,
+        "type":"permanent","isActive":true,"ContactNo": 7489674939,
         "stops": [
             { "stopName": "Mahudia (Start)", "firstShift": "7:15", "secondShift": "9:15" },
             { "stopName": "Nariakhedi", "firstShift": "7:20", "secondShift": "9:20" },
@@ -1432,7 +1448,7 @@ const dataBuses=[
     {
         "busNo": 60,
         "DriverName": "Shri Jagdish Prajapati",
-        "ContactNo": 9516715945,
+        "type":"permanent","isActive":true,"ContactNo": 9516715945,
         "stops": [
             { "stopName": "Indus Satellite 2", "firstShift": "7:35", "secondShift": "9:35" },
             { "stopName": "Singpore City", "firstShift": "7:40", "secondShift": "9:40" },

@@ -26,7 +26,6 @@ const Search = () => {
     fetch("http://localhost:3000/buses") 
       .then(res => res.json())
       .then(data => {
-        console.log("Fetched buses:", data);
         setBuses(data);
         setLoading(false);
       })
@@ -75,7 +74,7 @@ const Search = () => {
     <div className="whole-page">
       <div className="search-page">
         <div className="banner-heading">
-          <h1>All Bus Routes</h1>
+          <h1>Seach Your Bus Route</h1>
         </div>
         <div className="banner-subheading">
             <p>Find your bus route easily</p>   
@@ -89,15 +88,12 @@ const Search = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <button className="search-btn" type="submit">
-            Search
-          </button>
         </form>
       </div>
       <div className="search-bus">
         {results.length > 0 && (
           <Stack gap={1} className="search-results">
-            {results.map((bus, index) => (
+            {results.filter(bus=>bus.isActive).map((bus, index) => (
                 <motion.div
                     className="search-result-item"
                     key={index}

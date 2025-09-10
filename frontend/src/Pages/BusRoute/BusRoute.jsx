@@ -16,7 +16,7 @@ const BusRoute=()=>{
         fetch(`http://localhost:3000/buses/${busNo}`)
         .then(res=> res.json())
         .then(data=>{
-            console.log("Fetched Bus:", data);
+            console.log(data);
             setbus(data || []);
             setLoading(false);
         })
@@ -40,6 +40,8 @@ const BusRoute=()=>{
             <RouteBanner 
                 busNumber={busNo}
                 totalstops={bus.stops.length}
+                isActive={bus.isActive}
+                type={bus.type}
             />
             <div className="busroute-bottom">
                 <div className="busroute-main">
@@ -49,7 +51,7 @@ const BusRoute=()=>{
                     />
                     <div className="route-stops">
                         <div className="busroute-stops">
-                            <i class="fa-solid loc-icon fa-location-dot"></i>
+                            <i className="fa-solid loc-icon fa-location-dot"></i>
                             <p className='route-heading'>Route Stops</p>
                         </div>
                         <div className="all-stops">

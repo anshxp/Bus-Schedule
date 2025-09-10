@@ -15,7 +15,6 @@ const AllBuses = () => {
     fetch("http://localhost:3000/buses") 
       .then(res => res.json())
       .then(data => {
-        console.log("Fetched buses:", data);
         setBuses(data);
         setLoading(false);
       })

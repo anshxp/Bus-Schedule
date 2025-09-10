@@ -19,7 +19,7 @@ const SingleBus=({bus,busNumber,driverName,mobile,totalStops,stops})=>{
                         </div>
                         <div className="bus-data">
                             <div className="busn"><strong>Bus G{busNumber}</strong></div>
-                            <div className="total-stops">{totalStops} Stops</div>
+                            <div className="total-stops"> <i className="fa-solid fa-location-dot"> </i>{totalStops} Stops</div>
                         </div>
                     </div>
                     <button className="about-left-part-button">
@@ -30,7 +30,7 @@ const SingleBus=({bus,busNumber,driverName,mobile,totalStops,stops})=>{
             <div className="lower-part">
                 <div className="about-driver">
                     <div className="driver-icon">
-                        <i className="fa-solid fa-user"></i>
+                        <i className="fa-solid user-icon fa-user"></i>
                     </div>
                     <div className="driver-info">
                         <div className="drivername">

@@ -1,61 +1,240 @@
 import './AddBus.css';
 import AddBusBanner from '../../Components/AddBusBanner/AddBusBanner.jsx';
 import { FaTrash } from 'react-icons/fa';
-import { useState } from 'react';
-const AddBus=()=>{
-    const [busNo,setbusNo]=useState("");
-    const [driverName,setdriverName]=useState("");
-    const [ContactNo,setContactNo]=useState("");
-    const [stops,setStops]=useState([
-        {stopName:"",firstShift:"",secondShift:""}
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const AddBus = () => {
+    const navigate = useNavigate();
+    const [busNo, setBusNo] = useState("");
+    const [DriverName, setDriverName] = useState("");
+    const [ContactNo, setContactNo] = useState("");
+    const [stops, setStops] = useState([
+        { stopName: "", firstShift: "", secondShift: "" }
     ]);
-    const handleStop=()=>{
-        setStops([...stops,{stopName:"",firstShift:"",secondShift:""}])
+    const [type, setType] = useState(false);
+    const [isActive, setActive] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    useEffect(() => {
+        checkAdminAuth();
+    }, []);
+    
+    const checkAdminAuth = async () => {
+        try {
+            const res = await fetch("http://localhost:3000/buses/verify", {
+                method: "GET",
+                credentials: "include",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            
+            if (res.ok) {
+                const data = await res.json();
+                console.log('Auth response:', data);
+                
+                if (data.success) {
+                    console.log("✅ Admin verified");
+                    setIsAdmin(true);
+                } else {
+                    console.log("Not admin");
+                    alert("Access denied. Admin privileges required.");
+                    navigate("/");
+                }
+            } else {
+                console.error(`HTTP Error: ${res.status} ${res.statusText}`);
+                if (res.status === 401 || res.status === 403) {
+                    alert("Please login as admin to access this page.");
+                    navigate("/");
+                } else {
+                    // Server error - allow user to stay on page
+                    console.warn("Server error during auth check");
+                    setIsAdmin(true); // Temporary - remove in production
+                }
+            }
+        } catch (err) {
+            console.error("Auth check failed:", err);
+            console.warn("Network error - unable to verify admin status");
+            // In development, allow access. In production, you might want to redirect
+            setIsAdmin(true); // Remove this in production
+        }
     };
-    const handleRemoveStop=(index)=>{
-        setStops(stops.filter((_,i)=>i!==index))
+
+    const handleStop = () => {
+        setStops([...stops, { stopName: "", firstShift: "", secondShift: "" }]);
     };
+
+    const handleRemoveStop = (index) => {
+        if (stops.length > 1) {
+            setStops(stops.filter((_, i) => i !== index));
+        }
+    };
+
     const handleStopChange = (index, field, value) => {
         const updatedStops = [...stops];
         updatedStops[index][field] = value;
         setStops(updatedStops);
     };
+
+    const validateForm = () => {
+        // Validate bus number
+        const busNumber = parseInt(busNo);
+        if (!busNo || isNaN(busNumber) || busNumber <= 0) {
+            alert('Please enter a valid bus number (must be a positive integer)');
+            return false;
+        }
+
+        // Validate driver name
+        if (!DriverName || !DriverName.trim()) {
+            alert('Please enter a valid driver name');
+            return false;
+        }
+
+        // Validate contact number
+        const contactNumber = parseInt(ContactNo);
+        if (!ContactNo || isNaN(contactNumber) || contactNumber <= 0) {
+            alert('Please enter a valid contact number (must be a positive integer)');
+            return false;
+        }
+
+        // Validate contact number length (assuming 10 digits)
+        if (ContactNo.toString().length < 10) {
+            alert('Contact number must be at least 10 digits');
+            return false;
+        }
+
+        return true;
+    };
+
+    const resetForm = () => {
+        setBusNo("");
+        setDriverName("");
+        setContactNo("");
+        setStops([{ stopName: "", firstShift: "", secondShift: "" }]);
+        setType(false);
+        setActive(false);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const busData = {
-        busNo,
-        DriverName:driverName,
-        ContactNo,
-        stops,
-    }
-    try {
-        const res = await fetch('http://localhost:3000/buses/add', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(busData),
-        });
-
-        const data = await res.json();
-
-        if (data.success) {
-            alert('Bus added successfully!');
-            setbusNo("");
-            setdriverName("");
-            setContactNO("");
-            setStops([{ stopName: "", firstShift: "", secondShift: "" }]);
-        } else {
-            alert('Error: ' + data.message);
+        
+        if (!isAdmin) {
+            alert("Admin access required");
+            return;
         }
-    } catch (err) {
-        console.error(err);
-        alert('Something went wrong!');
-    }}
-    ;
-    return(
+
+        if (!validateForm()) {
+            return;
+        }
+
+        setLoading(true);
+
+        const busNumber = parseInt(busNo);
+        const contactNumber = parseInt(ContactNo);
+
+        const busData = {
+            busNo: busNumber,
+            DriverName: DriverName.trim(),
+            ContactNo: contactNumber,
+            type: type ? "permanent" : "temporary",
+            isActive: isActive
+        };
+
+        try {
+            console.log('Submitting bus data:', busData);
+
+            const res = await fetch('http://localhost:3000/buses/addBus', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify(busData),
+            });
+
+            let data;
+            try {
+                data = await res.json();
+            } catch (parseError) {
+                console.error('Failed to parse response:', parseError);
+                throw new Error('Invalid response from server');
+            }
+
+            console.log('Server response:', data);
+
+            if (res.ok && data.success) {
+                console.log('Bus created successfully, adding stops...');
+
+                // Add stops only if bus was created successfully
+                const validStops = stops.filter(stop => stop.stopName && stop.stopName.trim() !== "");
+                
+                if (validStops.length > 0) {
+                    try {
+                        for (const stop of validStops) {
+                            const stopData = {
+                                stopName: stop.stopName.trim(),
+                                firstShift: stop.firstShift.trim() || "",
+                                secondShift: stop.secondShift.trim() || ""
+                            };
+
+                            console.log(`Adding stop: ${stopData.stopName}`);
+
+                            const stopRes = await fetch(`http://localhost:3000/buses/${busNumber}/stops/add`, {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                credentials: 'include',
+                                body: JSON.stringify(stopData),
+                            });
+
+                            if (!stopRes.ok) {
+                                console.warn(`Failed to add stop: ${stopData.stopName}`);
+                            }
+                        }
+                    } catch (stopError) {
+                        console.error('Error adding stops:', stopError);
+                        alert('Bus was created but some stops could not be added. You can add them later.');
+                    }
+                }
+
+                alert('Bus added successfully!');
+                resetForm();
+            } else {
+                const errorMessage = data.message || data.error || 'Unknown error occurred';
+                console.error('Server error:', errorMessage);
+                alert(`Error: ${errorMessage}`);
+            }
+        } catch (err) {
+            console.error('Submit error:', err);
+            if (err.name === 'TypeError' && err.message.includes('fetch')) {
+                alert('Unable to connect to server. Please check if the server is running.');
+            } else {
+                alert(`Error: ${err.message}`);
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // Show loading or unauthorized message
+    if (!isAdmin) {
+        return (
+            <div className="AddBus">
+                <AddBusBanner />
+                <div className="AddBus-form">
+                    <div style={{ textAlign: 'center', padding: '2rem' }}>
+                        <h3>Checking admin privileges...</h3>
+                        <p>Please wait while we verify your access rights.</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    return (
         <div className="AddBus">
-            <AddBusBanner/>
+            <AddBusBanner />
             <div className="AddBus-form">
                 <form onSubmit={handleSubmit}>
                     <div className="AddBus-BusInfo">
@@ -64,124 +243,161 @@ const AddBus=()=>{
                         </div>
                         <label htmlFor="busNo">Bus Number</label>
                         <input
-                        id="busNo"
-                        placeholder="Only enter Bus number"
-                        value={busNo}
-                        onChange={(e) => setBusNumber(e.target.value)}
+                            id="busNo"
+                            type="number"
+                            min="1"
+                            step="1"
+                            placeholder="Enter bus number (e.g., 21)"
+                            value={busNo}
+                            onChange={(e) => setBusNo(e.target.value)}
+                            required
+                            disabled={loading}
                         />
                     </div>
+
                     <div className="AddBus-DriverInfo">
                         <div className="AddBus-DriverInfo-heading">
                             Driver Information
                         </div>
-                        <label htmlFor="driverName">Driver Name</label>
+                        <label htmlFor="DriverName">Driver Name</label>
                         <input
-                        id="driverName"
-                        placeholder="Enter Driver's Name"
-                        value={busNo}
-                        onChange={(e) => setdriverName(e.target.value)}
+                            id="DriverName"
+                            type="text"
+                            placeholder="Enter driver's full name"
+                            value={DriverName}
+                            onChange={(e) => setDriverName(e.target.value)}
+                            required
+                            disabled={loading}
                         />
                         <label htmlFor="ContactNo">Driver Contact Number</label>
                         <input
-                        id="ContactNo"
-                        placeholder="Enter Driver's Contact Number"
-                        value={driverName}
-                        onChange={(e) => setContactNo(e.target.value)}
+                            id="ContactNo"
+                            type="number"
+                            min="1000000000"
+                            max="9999999999"
+                            placeholder="Enter 10-digit contact number"
+                            value={ContactNo}
+                            onChange={(e) => setContactNo(e.target.value)}
+                            required
+                            disabled={loading}
                         />
                     </div>
+
                     <div className="AddBus-RouteInfo">
                         <div className="AddBus-RouteInfo-heading">
-                            <div className="mainheading">
-                                Route Stops
-                            </div>
-                            <div className="AddStop-button" onClick={handleStop}>
+                            <div className="mainheading">Route Stops</div>
+                            <button
+                                type="button"
+                                className="AddStop-button"
+                                onClick={handleStop}
+                                disabled={loading}
+                            >
                                 + Add Stop
-                            </div>
+                            </button>
                         </div>
-                        {stops.map((stop,index)=>(
+                        {stops.map((stop, index) => (
                             <div key={index} className="stop-box">
                                 <div className="stop-header">
-                                    <h3>Stop {index+1}</h3>
-                                {stops.length > 1 && (
-                                    <button
-                                    type="button"
-                                    className="remove-btn"
-                                    onClick={() => handleRemoveStop(index)}
-                                    >
-                                    <FaTrash/>
-                                    </button>
-                                )}
+                                    <h3>Stop {index + 1}</h3>
+                                    {stops.length > 1 && (
+                                        <button
+                                            type="button"
+                                            className="remove-btn"
+                                            onClick={() => handleRemoveStop(index)}
+                                            disabled={loading}
+                                        >
+                                            <FaTrash />
+                                        </button>
+                                    )}
                                 </div>
                                 <div className="stop-detail">
-                                    <label className='stopName' htmlFor="stopName">Stop Name</label>
-                                    <input type="text"
+                                    <label htmlFor={`stopName-${index}`}>Stop Name</label>
+                                    <input
+                                        id={`stopName-${index}`}
+                                        type="text"
                                         value={stop.stopName}
-                                        className='stopName'
+                                        className="stopName"
                                         onChange={(e) =>
                                             handleStopChange(index, "stopName", e.target.value)
                                         }
-                                        placeholder='Enter the Stop Name'
+                                        placeholder="Enter stop name"
+                                        disabled={loading}
                                     />
                                     <div className="stop-timings">
                                         <div className="firstshift">
-                                            <label htmlFor="firstShift">First Shift</label>
-                                            <input type="text"
+                                            <label htmlFor={`firstShift-${index}`}>First Shift</label>
+                                            <input
+                                                id={`firstShift-${index}`}
+                                                type="text"
                                                 value={stop.firstShift}
-                                                className='timing'
+                                                className="timing"
                                                 onChange={(e) =>
                                                     handleStopChange(index, "firstShift", e.target.value)
                                                 }
-                                                placeholder='Enter the First Shift Timing'
+                                                placeholder="e.g., 08:00 AM"
+                                                disabled={loading}
                                             />
                                         </div>
                                         <div className="secondShift">
-                                                <label htmlFor="secondhift">Second Shift</label>
-                                                <input type="text"
-                                                className='timing'
-                                                    value={stop.secondShift}
-                                                    onChange={(e) =>
-                                                        handleStopChange(index, "secondShift", e.target.value)
-                                                    }
-                                                    placeholder='Enter the Second Shift Timing'
-                                                />
+                                            <label htmlFor={`secondShift-${index}`}>Second Shift</label>
+                                            <input
+                                                id={`secondShift-${index}`}
+                                                type="text"
+                                                className="timing"
+                                                value={stop.secondShift}
+                                                onChange={(e) =>
+                                                    handleStopChange(index, "secondShift", e.target.value)
+                                                }
+                                                placeholder="e.g., 02:00 PM"
+                                                disabled={loading}
+                                            />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         ))}
                     </div>
+
                     <div className="settype">
-                        <label htmlFor="type"></label>
                         <div className="type">
-                                Permanent 
-                                <input type="checkbox" id='type' />
+                            <label htmlFor="type" className='type'>Permanent</label>
+                                <input 
+                                    type="checkbox" 
+                                    id='type'
+                                    checked={type}
+                                    onClick={(e)=>setType(e.target.checked)}/>
                         </div>
-                        <label htmlFor="isActive"></label>
                         <div className="isActive">
-                                Active
-                                <input type="checkbox" id='isActive'/>
+                            <label htmlFor="isActive" className='isActive'>Active</label>
+                                <input 
+                                    type="checkbox" 
+                                    id='isActive'
+                                    checked={isActive}
+                                    onClick={(e)=>setActive(e.target.checked)}/>
                         </div>
                     </div>
+
                     <div className="form-actions">
-                        <button 
-                            type='button'
-                            className='cancel-btn'
-                            onClick={
-                                () => {
-                                setBusNo("");
-                                setDriverName("");
-                                setContactNo("");
-                                setStops([{ stopName: "", firstShift: "", secondShift: "" }]);
-                            }}
-                            >
+                        <button
+                            type="button"
+                            className="cancel-btn"
+                            onClick={resetForm}
+                            disabled={loading}
+                        >
                             Cancel
                         </button>
-                        <button type='submit' className='submit-btn'>Submit</button>
+                        <button
+                            type="submit"
+                            className="submit-btn"
+                            disabled={loading}
+                        >
+                            {loading ? 'Adding Bus...' : 'Add Bus'}
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default AddBus;

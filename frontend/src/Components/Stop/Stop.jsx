@@ -9,12 +9,12 @@ const Stop=({index,stopName,first,second})=>{
                 <div className="stop-name">{stopName}</div>
                 <div className="stop-timing">
                     <div className="first">
-                        <div className="clock-icon"><i class="fa-regular clock fa-clock"></i></div>
+                        <div className="clock-icon"><i className="fa-regular clock fa-clock"></i></div>
                         <p className='shift'>First:</p>
                         <p className='time'>{first}</p>
                     </div>
                     <div className="second">
-                        <div className="clock-icon"><i class="fa-regular clock fa-clock"></i></div>
+                        <div className="clock-icon"><i className="fa-regular clock fa-clock"></i></div>
                         <p className='shift'>Second:</p>
                         <p className='time'>{second}</p>
                     </div>

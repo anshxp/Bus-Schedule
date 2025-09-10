@@ -19,7 +19,8 @@ const register=async (req,res)=>{
         })
         await admin.save();
         const token=jwt.sign({
-            id:admin._id
+            id:admin._id,
+            role: "admin"
         },process.env.JWT_SECRET,{expiresIn:'7d'});
         res.cookie('admintoken',token,{
             httpOnly:true,
@@ -47,7 +48,8 @@ const login=async(req,res)=>{
             return res.json({success:false,message:"Invalid password"});   
         }
         const token=jwt.sign({
-            id:admin._id
+            id:admin._id,
+            role: "admin"
         },process.env.JWT_SECRET,{expiresIn:'7d'});
         res.cookie('admintoken',token,{
             httpOnly:true,
@@ -55,7 +57,7 @@ const login=async(req,res)=>{
             sameSite:process.env.NODE_ENV==='production'?'none':"strict",
             maxAge:7*24*60*60*1000
         })
-        return res.json({success:true});
+        return res.json({success:true,token});
     }catch(err){
         res.json({success:false,message:err.message});
     }

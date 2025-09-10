@@ -24,11 +24,6 @@ function MyNavbar() {
     })
   }
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.body.classList.toggle("dark-theme");
-  };
-
   return (
     <Navbar
       expand="sm"
@@ -75,14 +70,16 @@ function MyNavbar() {
             >
               <i className="fa-solid fa-magnifying-glass-location"></i> Search
             </Nav.Link>
+            <div className="admin-privileges">
+              {isAdmin && (
+                <button className='btn ' onClick={()=>navigate('/addbus')}>Add Bus</button>
+              )}
+              {isAdmin && (
+                <button className='btn btn-danger' onClick={handleLogout}>Log Out</button>
+              )}
+            </div>
           </Nav>
         </Navbar.Collapse>
-        {isAdmin && (
-          <button className='btn ' onClick={handleLogout}>Add Bus</button>
-        )}
-        {isAdmin && (
-          <button className='btn btn-danger' onClick={handleLogout}>Log Out</button>
-        )}
       </Container>
     </Navbar>
   );

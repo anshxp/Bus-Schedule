@@ -23,13 +23,14 @@
 }
 .user-icon{
     opacity: 0.8;
+    color: #75161C;
 }
 .driver-main-head{
     display: flex;
     align-items:center;
     font-size: 1.6rem;
     font-weight: 600;
-    color:#21232C;
+    color:#01062B;
     margin: 5px;
 }
 .driver-data{
@@ -41,8 +42,8 @@
 }
 .driverName{
     font-size: 1.1rem;
-    font-weight: 500;
-    color: black;
+    font-weight: 600;
+    color: #01062B;
     display: flex;
     align-items: center;
     margin: 3px;
@@ -50,41 +51,42 @@
 }
 .drivermobile{
     font-size: 1rem;
-    font-weight: 350;
-    color: #21232C;
-    opacity: 0.6;
+    font-weight: 400;
+    color: #75161C;
+    opacity: 0.7;
     display: flex;
     align-items: center;
     gap: 7.5px;
 }
-.contact{
+.info-contact{
+    color: #75161C;
     font-size: 0.8rem;
 }
-.driver-right{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+.contact{
+    color: #01062B;
 }
 .driver-right{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    color: black;
+    color: #01062B;
     background-color: #F9F9FA;
     padding: 5px;
-    border:0.8px solid #DDE0E4;
+    border:0.8px solid #01062B;
     border-radius: 10px;
+    cursor: pointer;
 }
 .driver-right:hover{
-    background-color: #344256;
+    background-color: #75161C;
     color:#fff
 }
-
+.driver-right:hover .contact{
+    color:#fff
+}
 .driver-right:active{
-    background-color: #344256;
-    color:#fff;
+    background-color: #75161C;
+    color:#fff !important;
     transition-duration: 2s;
 }
 @media(max-width:850px){
@@ -92,5 +94,15 @@
         width: 90vw;
         margin: 10px auto;
         
+    }
+    .driver-head{
+        font-size: 1rem;
+        font-weight: 550;
+    }
+    .driverName{
+        font-size: 1rem;
+    }
+    .drivermobile{
+        font-size: 0.85rem;
     }
 }

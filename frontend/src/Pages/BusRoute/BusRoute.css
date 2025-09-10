@@ -28,8 +28,9 @@
     background-color: #f5f7fa;
 }
 .loc-icon{
-    font-size: 1.4rem;
-    opacity: 0.8;
+    color: #75161C;
+    font-size: 1.6rem;
+    opacity: 1;
 }
 .busroute-stops{
     display: flex;
@@ -37,12 +38,12 @@
     align-items: center;
     font-size: 1.75rem;
     font-weight: 500;
-    margin:0px 20px;
-    padding: 5px;
     gap: 12px;
 }
 .route-heading{
+    color: #00062B;
     display: flex;
+    font-weight: 550;
     align-items: center;
 }
 .busroute-bottom{

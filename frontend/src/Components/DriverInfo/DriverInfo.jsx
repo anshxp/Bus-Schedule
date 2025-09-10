@@ -10,7 +10,7 @@ const DriverInfo=({drivername,mobile})=>{
                 <div className="driver-left">
                     <div className="driverName">{drivername}</div>
                     <div className="drivermobile">
-                        <i class="fa-classic fa-phone contact"></i>{mobile}
+                        <i className="fa-classic fa-phone info-contact"></i>{mobile}
                     </div>
                 </div>
                 <button 
@@ -18,7 +18,7 @@ const DriverInfo=({drivername,mobile})=>{
                     onClick={()=>{
                         window.location.href=`tel:${mobile}`
                     }}>
-                    <i class="fa-solid fa-phone contact"></i>
+                    <i className="fa-solid fa-phone contact"></i>
                     <div className="call-driver">Call Driver</div>
                 </button>
             </div>

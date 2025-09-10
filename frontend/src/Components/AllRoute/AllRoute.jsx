@@ -18,7 +18,7 @@ const AllRoute=({viewtype,setViewType,buses})=>{
                 </div>
             </div>
             <div className={`all-buses ${viewtype}`}>
-                {buses.map((bus,idx)=>(
+                {buses.filter(bus=>bus.isActive).map((bus,idx)=>(
                     <motion.div
                         key={idx}
                         initial={{opacity:0,y:-50}}

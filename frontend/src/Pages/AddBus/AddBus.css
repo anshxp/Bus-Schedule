@@ -89,7 +89,8 @@ input::placeholder{
     cursor: pointer;
     font-weight: 400;
     border-radius: 10px;
-    color: #696A71;
+    background-color: #fff;
+    color: #75161C;
     border: 0.01px solid #696A71;
 }
 .AddStop-button:hover,.AddStop-button:focus{
@@ -173,43 +174,22 @@ h3{
     justify-content: flex-start;
     margin: 0;
     padding: 0;
+    gap: 1rem;
     margin-bottom: 1rem;
 }
-.type{
+.type, .isActive{
+    padding: 1rem;
     display: flex;
     align-items: center;
-    justify-content:space-between;
-    left: 0px;
+    justify-content: flex-start;
+    width: 45%;
+    gap: 1rem;
     font-size: 1.2rem;
-    font-weight: 550;
-    gap: 3rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid black;
-    border-radius: 15px;
-    margin: 1rem;
-    width: 50%;
-}
-.isActive{
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
-    width: 50%;
-    font-size: 1.2rem;
-    font-weight: 550;
-    gap: 3rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid black;
-    border-radius: 15px;
-    margin: 1rem;
-    width: 20rem;
 }
 input[type="checkbox"]{
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 0.5rem !important;
     transform: scale(0.5);
-    color: #75161C;
-    background-color: #75161C;
-    border-color: #75161C;
-    font-size: 0.5rem;
 }

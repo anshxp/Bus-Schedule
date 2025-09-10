@@ -1,4 +1,5 @@
 .route-bus-icon{
+    color:#75161c;
     font-size: 1rem;
     font-weight: 550;
     margin-right: 10px;
@@ -7,7 +8,7 @@
 .Total-buses p{
     font-size: 1.2rem;
     font-weight: 600;
-    color: #333;
+    color: #00062B;
     display: flex;
     align-items: center;
 }
@@ -40,7 +41,7 @@
     margin: 0px;
 }
 .grid.active, .list.active{
-    background-color: #435063;
+    background-color: #75161c;
     color: #fff;
 }
 .grid.active{

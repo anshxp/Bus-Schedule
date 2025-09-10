@@ -9,18 +9,12 @@ import Admin from './Pages/Admin/Admin.jsx'
 import BusRoute from './Pages/BusRoute/BusRoute.jsx';
 import BusIntro from './Components/BusIntro/BusIntro.jsx'; 
 import AddBus from './Pages/AddBus/AddBus.jsx';
+import EditBus from './Pages/EditBus/EditPage.jsx';
 
 function App() {
   const [darkMode, setDarkMode] = useState(()=>{
     return localStorage.getItem("theme") === "dark";
-  });
-  const toggleDarkMode = () => {
-  setDarkMode((prev) => {
-    const newMode = !prev;
-    localStorage.setItem("theme", newMode ? "dark" : "light");
-    return newMode;
-    });
-  };
+  })
   useEffect(()=>{
     if(darkMode){
       document.documentElement.classList.add("dark");
@@ -43,9 +37,12 @@ function App() {
               <Route path="/bus/:busNo" element={<BusRoute />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/addbus" element={<AddBus />} />
+              <Route path="/bus/:busNo/editbus" element={<EditBus />} />
             </Routes>
           </div>
-          <Footer />
+          <footer>
+            <Footer />
+          </footer>
         </div>
       </BrowserRouter>
     </div>
