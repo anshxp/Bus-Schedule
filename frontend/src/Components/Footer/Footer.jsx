@@ -12,9 +12,9 @@ const Footer = () => {
   return (
     <footer className="custom-footer">
       <Container>
-        <Row className="align-items-center">
+        <Row className="align-items-center text-center">
           {/* Logo */}
-          <Col md={4} className="text">
+          <Col xs={12} md={4} className="text mb-3 mb-md-0">
             <img
               src="https://aitr.ac.in/wp-content/uploads/2023/03/unnamed-1-2048x405.png"
               alt="Acropolis Logo"

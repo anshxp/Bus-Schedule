@@ -7,7 +7,8 @@
 .AddBus-form{
     margin: 3rem 0rem;
     display: flex;
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     align-items: center;
     justify-content: space-around;
     padding: 2rem 0rem;
@@ -192,4 +193,55 @@ input[type="checkbox"]{
     justify-content: center;
     padding-top: 0.5rem !important;
     transform: scale(0.5);
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .AddBus-form {
+    max-width: 90%; /* shrink on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .AddBus-form {
+    max-width: 100%;
+    padding: 1.5rem 1rem;
+  }
+
+  .stop-timings {
+    flex-direction: column; /* stack first/second shift vertically */
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .submit-btn,
+  .cancel-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .AddBus-BusInfo-heading,
+  .AddBus-DriverInfo-heading,
+  .AddBus-RouteInfo-heading {
+    font-size: 1.2rem;
+  }
+
+  label {
+    font-size: 0.85rem;
+  }
+
+  input::placeholder {
+    font-size: 0.8rem;
+  }
+
+  h3 {
+    font-size: 1rem !important;
+  }
 }

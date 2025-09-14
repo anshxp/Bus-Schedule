@@ -146,7 +146,7 @@
     justify-content: center;
     margin-top: 10px;
 }
-@media(max-width: 450px) {
+@media(max-width: 500px) {
   .route-banner {
     flex-direction: column;
     justify-content: center;

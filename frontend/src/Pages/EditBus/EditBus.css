@@ -10,7 +10,8 @@
 .edit-form {
     margin: 0;
     display: flex;
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     align-items: center;
     justify-content: space-around;
     padding: 2rem 0;
@@ -236,4 +237,57 @@ input[type="checkbox"] {
     border-radius: 10px;
     padding: 5px 10px;
     cursor: pointer;
+}
+
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .edit-form {
+    max-width: 90%; /* shrink on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .edit-form {
+    max-width: 100%;
+    padding: 1.5rem 1rem;
+  }
+
+  .shift-timings {
+    flex-direction: column; /* stack shift timings */
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 1rem;
+    padding: 0;
+  }
+
+  .submit-btn,
+  .cancel-btn {
+    width: 100%; /* full width buttons */
+  }
+}
+
+@media (max-width: 480px) {
+  .edit-businfo h3,
+  .edit-driverinfo h3,
+  .edit-routeInfo .mainheading {
+    font-size: 1.2rem !important;
+  }
+
+  label {
+    font-size: 0.85rem;
+  }
+
+  input::placeholder {
+    font-size: 0.8rem;
+  }
+
+  h5 {
+    font-size: 1rem !important;
+  }
 }

@@ -18,15 +18,20 @@ const RouteBanner=({busNumber,totalstops,isActive,type})=>{
             return ;
         }
         try{
-            const res=await fetch(`http://localhost:3000/buses/${busNumber}`,{
+            const res=await fetch(`http://localhost:3000/admin/${busNumber}`,{
                 method:'DELETE',
                 headers:{
                     "Content-Type":"application/json",
                 },
                 credentials:"include"
             });
+            let recentBuses = JSON.parse(localStorage.getItem("recentBuses")) || [];
+            recentBuses = recentBuses.filter((bus) => bus._id !== busId);
+            localStorage.setItem("recentBuses", JSON.stringify(recentBuses));
+
+            // ✅ Optionally update state if you store it in React state
+            setRecentBuses(recentBuses);
          if (res.ok) {
-                alert(`Bus ${busNumber} deleted successfully`);
                 navigate('/allbuses')
             } else {
                 const errorData = await res.json();
