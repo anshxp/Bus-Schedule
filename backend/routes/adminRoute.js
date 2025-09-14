@@ -6,10 +6,10 @@ const adminRoute=express.Router();
 const {addbusSchema} =require('../validation/busValidation.js');
 const {editbusSchema} =require('../validation/busValidation.js')
 
+adminRoute.get('/verify',verify);
 adminRoute.post('/addbus',validateaddBus,verifyAdmin,addBus);
 adminRoute.post('/:busNo/editbus',validateeditBus,verifyAdmin,editBus);
 adminRoute.patch('/:busNo/active',verifyAdmin,activestatus);
-adminRoute.get('/verify',verify);
 adminRoute.post('/:busNo/stops/add',verifyAdmin,addsingleStop);
 adminRoute.post('/:busNo/stops/:stopName',verifyAdmin,editsingleStop);
 adminRoute.delete('/:busNo/stops/:stopName',verifyAdmin,deleteStop)

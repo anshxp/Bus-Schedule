@@ -1,31 +1,30 @@
 import React, { useState } from "react";
 import "./Admin.css";
 import { FaUserShield, FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import { useAuth } from "../../Context/AuthContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 const AdminCard = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email,setemail]=useState("");
   const [password,setpassword]=useState("");
+  const [loading,setLoading]=useState(false);
   const [error,setError]=useState("");
+
+  const {login}=useAuth();
+  const navigate=useNavigate();
+
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError("");
     try {
-      const res = await fetch("http://localhost:3000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        credentials: "include", // 🔥 allows cookies
-        body: JSON.stringify({ email, password })
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        localStorage.setItem('admintoken',true);
-        alert("Login successful ✅");
-        window.location.href = "/"; // redirect
-      } else {
-        setError(data.message || "Login failed");
+      const result=await login(email,password);
+      if(result.success){
+        navigate('/addbus');
+      }
+      else{
+        setError(result.message || "Login failed");
       }
     } catch (err) {
       setError("Something went wrong 😓");

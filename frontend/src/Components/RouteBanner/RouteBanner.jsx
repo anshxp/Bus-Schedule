@@ -2,7 +2,6 @@ import './RouteBanner.css'
 import { useState,useEffect } from 'react';
 import { MdEdit } from "react-icons/md";
 import { FiTrash2 } from "react-icons/fi";
-
 import {useNavigate} from "react-router-dom";
 const RouteBanner=({busNumber,totalstops,isActive,type})=>{
     const navigate =useNavigate();
@@ -73,6 +72,7 @@ const RouteBanner=({busNumber,totalstops,isActive,type})=>{
             {isAdmin && <div className="route-banner-right">
                 <button 
                     className='editbus'
+                    onClick={()=>navigate(`/bus/${busNumber}/editbus`)}
                     ><MdEdit/> Edit Bus</button>
                 <button className='delete-bus' onClick={()=>DeleteBus(busNumber)}><FiTrash2/> Delete Bus</button>
             </div>}

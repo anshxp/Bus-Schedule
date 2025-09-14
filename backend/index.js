@@ -37,7 +37,7 @@ app.use(bodyParser.json());
 
 app.use('/', busrouter);
 app.use('/',authRouter);
-app.use('/buses',adminRoute);
+app.use('/admin',adminRoute);
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,

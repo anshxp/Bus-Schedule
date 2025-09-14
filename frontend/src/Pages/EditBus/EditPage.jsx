@@ -68,7 +68,7 @@ const EditPage = () => {
 
     const checkAdminAuth = async () => {
         try {
-            const res = await fetch("http://localhost:3000/buses/verify", {
+            const res = await fetch("http://localhost:3000/admin/verify", {
                 method: "GET",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },
@@ -110,7 +110,7 @@ const EditPage = () => {
 
         setLoading(true);
         try {
-            const res = await fetch(`http://localhost:3000/buses/${busNo}/editBus`, {
+            const res = await fetch(`http://localhost:3000/admin/${busNo}/editBus`, {
                 method: "POST",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },
@@ -151,7 +151,7 @@ const EditPage = () => {
             
             if (res.ok) {
                 const data = await res.json();
-                console.log(data);
+                console.log("Data collected",data);
                 setbusnumber(data.busNo || "");
                 setdrivername(data.DriverName || "");
                 setcontact(data.ContactNo || "");

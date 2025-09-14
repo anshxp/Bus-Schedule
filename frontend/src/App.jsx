@@ -10,19 +10,9 @@ import BusRoute from './Pages/BusRoute/BusRoute.jsx';
 import BusIntro from './Components/BusIntro/BusIntro.jsx'; 
 import AddBus from './Pages/AddBus/AddBus.jsx';
 import EditBus from './Pages/EditBus/EditPage.jsx';
+import ProtectedRoute from './Components/routes/ProtectedRoute.jsx';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(()=>{
-    return localStorage.getItem("theme") === "dark";
-  })
-  useEffect(()=>{
-    if(darkMode){
-      document.documentElement.classList.add("dark");
-    }
-    else{
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
   return (
     <div className="app">
       <BrowserRouter>
@@ -35,9 +25,17 @@ function App() {
               <Route path="/allbuses" element={<AllBuses />} />
               <Route path="/search" element={<Search />} />
               <Route path="/bus/:busNo" element={<BusRoute />} />
-              <Route path="/admin" element={<Admin />} />
-              <Route path="/addbus" element={<AddBus />} />
-              <Route path="/bus/:busNo/editbus" element={<EditBus />} />
+              <Route path="/admin" element={
+                  <Admin />} />
+              <Route path="/addbus" element={
+                <ProtectedRoute>
+                  <AddBus />
+                  </ProtectedRoute>
+                } />
+              <Route path="/bus/:busNo/editbus" element={
+                <ProtectedRoute>
+                  <EditBus />
+                </ProtectedRoute>} />
             </Routes>
           </div>
           <footer>

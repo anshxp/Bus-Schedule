@@ -100,6 +100,7 @@ const deleteBus=async (req,res)=>{
         return res.json({success:false,message:err.message});
     }
 }
+
 const addsingleStop=async (req,res)=>{
     const {busNo}=req.params;
     const {stopName,firstShift,secondShift}=req.body;
@@ -122,6 +123,7 @@ const addsingleStop=async (req,res)=>{
         return res.json({success:false,message:err.message});
     }
 }
+
 const editsingleStop=async (req,res)=>{
     const {busNo}=req.params;
     const {stopName,firstShift,secondShift}=req.body;
@@ -147,6 +149,7 @@ const editsingleStop=async (req,res)=>{
         return res.status(404).json({success:false,message:err.message})
     }
 }
+
 const deleteStop=async (req,res)=>{
     const {busNo}=req.params;
     const {stopName}=req.body;
@@ -171,6 +174,7 @@ const deleteStop=async (req,res)=>{
         return res.status(404).send({message:"Error deleting"})
     }
 }
+
 const activestatus=async (req,res)=>{
     // const {busNo}=req.params;
     const {busNo,isActive}=req.body;
@@ -192,33 +196,34 @@ const activestatus=async (req,res)=>{
         return res.json({success:false,message:err.message});
     }
 }
-const verify=async (req, res) => {
+const verify=(req, res) => {
   try {
-    const token = req.cookies.admintoken;
+    console.log(req.cookies);
+    // get token from cookie or header
+    const token = req.cookies?.admintoken || req.headers["authorization"];
+
     if (!token) {
-      return res.status(401).json({ success: false, message: "No token" });
+      return res.status(401).json({ message: "No token, unauthorized" });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log("Decoded Token:", decoded);
-    if (decoded.role !== "admin") {
-      return res.status(403).json({ success: false, message: "Not admin" });
-    }
-    const admin = await adminModel.findById(decoded.id);
-    if (!admin) {
-        return res.status(403).json({ success: false, message: "Admin not found" });
-    }
+    // handle Bearer tokens (if sent in header)
+    const actualToken = token.startsWith("Bearer ") ? token.split(" ")[1] : token;
 
-    return res.json({ success: true, message: "Admin verified" ,admin});
-  } catch (err) {
-     // Handle specific JWT errors
-        if (err.name === 'JsonWebTokenError') {
-            return res.json({ success: false, message: 'Invalid token' });
-        } else if (err.name === 'TokenExpiredError') {
-            return res.json({ success: false, message: 'Token expired' });
-        }
-        
-    return res.status(401).json({ success: false, message: "Invalid token" });
+    jwt.verify(actualToken, process.env.JWT_SECRET, (err, decoded) => {
+      if (err) {
+        return res.status(403).json({ message: "Invalid or expired token" });
+      }
+
+      // success → send admin details
+      res.json({
+        success: true,
+        message: "Admin verified",
+        admin: decoded, // contains info you stored when signing token
+      });
+    });
+  } catch (error) {
+    console.error("Verify error:", error);
+    res.status(500).json({ message: "Server error" });
   }
 };
 

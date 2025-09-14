@@ -15,52 +15,6 @@ const AddBus = () => {
     const [type, setType] = useState(false);
     const [isActive, setActive] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false);
-
-    useEffect(() => {
-        checkAdminAuth();
-    }, []);
-    
-    const checkAdminAuth = async () => {
-        try {
-            const res = await fetch("http://localhost:3000/buses/verify", {
-                method: "GET",
-                credentials: "include",
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            
-            if (res.ok) {
-                const data = await res.json();
-                console.log('Auth response:', data);
-                
-                if (data.success) {
-                    console.log("✅ Admin verified");
-                    setIsAdmin(true);
-                } else {
-                    console.log("Not admin");
-                    alert("Access denied. Admin privileges required.");
-                    navigate("/");
-                }
-            } else {
-                console.error(`HTTP Error: ${res.status} ${res.statusText}`);
-                if (res.status === 401 || res.status === 403) {
-                    alert("Please login as admin to access this page.");
-                    navigate("/");
-                } else {
-                    // Server error - allow user to stay on page
-                    console.warn("Server error during auth check");
-                    setIsAdmin(true); // Temporary - remove in production
-                }
-            }
-        } catch (err) {
-            console.error("Auth check failed:", err);
-            console.warn("Network error - unable to verify admin status");
-            // In development, allow access. In production, you might want to redirect
-            setIsAdmin(true); // Remove this in production
-        }
-    };
 
     const handleStop = () => {
         setStops([...stops, { stopName: "", firstShift: "", secondShift: "" }]);
@@ -119,11 +73,6 @@ const AddBus = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        if (!isAdmin) {
-            alert("Admin access required");
-            return;
-        }
 
         if (!validateForm()) {
             return;
@@ -145,7 +94,7 @@ const AddBus = () => {
         try {
             console.log('Submitting bus data:', busData);
 
-            const res = await fetch('http://localhost:3000/buses/addBus', {
+            const res = await fetch('http://localhost:3000/admin/addBus', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -153,13 +102,12 @@ const AddBus = () => {
                 credentials: 'include',
                 body: JSON.stringify(busData),
             });
-
             let data;
             try {
                 data = await res.json();
             } catch (parseError) {
                 console.error('Failed to parse response:', parseError);
-                throw new Error('Invalid response from server');
+                throw new Error('Invalid response from server',parseError);
             }
 
             console.log('Server response:', data);
@@ -181,7 +129,7 @@ const AddBus = () => {
 
                             console.log(`Adding stop: ${stopData.stopName}`);
 
-                            const stopRes = await fetch(`http://localhost:3000/buses/${busNumber}/stops/add`, {
+                            const stopRes = await fetch(`http://localhost:3000/admin/${busNumber}/stops/add`, {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
                                 credentials: 'include',
@@ -217,21 +165,6 @@ const AddBus = () => {
         }
     };
 
-    // Show loading or unauthorized message
-    if (!isAdmin) {
-        return (
-            <div className="AddBus">
-                <AddBusBanner />
-                <div className="AddBus-form">
-                    <div style={{ textAlign: 'center', padding: '2rem' }}>
-                        <h3>Checking admin privileges...</h3>
-                        <p>Please wait while we verify your access rights.</p>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
     return (
         <div className="AddBus">
             <AddBusBanner />
@@ -249,7 +182,7 @@ const AddBus = () => {
                             step="1"
                             placeholder="Enter bus number (e.g., 21)"
                             value={busNo}
-                            onChange={(e) => setBusNo(e.target.value)}
+                            onChange={(e) => setBusNo(Number(e.target.value))}
                             required
                             disabled={loading}
                         />
@@ -277,7 +210,7 @@ const AddBus = () => {
                             max="9999999999"
                             placeholder="Enter 10-digit contact number"
                             value={ContactNo}
-                            onChange={(e) => setContactNo(e.target.value)}
+                            onChange={(e) => setContactNo(Number(e.target.value))}
                             required
                             disabled={loading}
                         />
@@ -365,7 +298,7 @@ const AddBus = () => {
                                     type="checkbox" 
                                     id='type'
                                     checked={type}
-                                    onClick={(e)=>setType(e.target.checked)}/>
+                                    onChange={(e)=>setType(e.target.checked)}/>
                         </div>
                         <div className="isActive">
                             <label htmlFor="isActive" className='isActive'>Active</label>
@@ -373,7 +306,7 @@ const AddBus = () => {
                                     type="checkbox" 
                                     id='isActive'
                                     checked={isActive}
-                                    onClick={(e)=>setActive(e.target.checked)}/>
+                                    onChange={(e)=>setActive(e.target.checked)}/>
                         </div>
                     </div>
 

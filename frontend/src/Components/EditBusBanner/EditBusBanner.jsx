@@ -1,10 +1,12 @@
 import './EditBusBanner.css';
 import { FaEdit } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const EditBusBanner=({busNo})=>{
-    return(
+const EditBusBanner = ({ busNo }) => {
+    const navigate = useNavigate();
+    return (
         <div className="EditBus-banner">
-            <div className="back-button" onClick={()=>{
+            <div className="back-button" onClick={() => {
                 navigate(-1);
             }}>
                 <i className="fa-solid arrow-left fa-arrow-left"></i>
@@ -12,7 +14,7 @@ const EditBusBanner=({busNo})=>{
             </div>
             <div className="EditBusbanner-bus">
                 <div className="EditBusbanner-bus-icon">
-                    <FaEdit/>
+                    <FaEdit />
                 </div>
                 <div className="EditBusbanner-busheadings">
                     <div className="EditBusbanner-heading">

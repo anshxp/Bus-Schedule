@@ -1,5 +1,9 @@
-const errorhandler=(err,req,res,next)=>{
-    console.log(err);
-    res.status(500).json({ success: false, message: 'Something went wrong!',err });
+const errorhandler = (err, req, res, next) => {
+  console.error("Error Middleware:", err.message);
+  res.status(500).json({ 
+    success: false, 
+    message: err.message || 'Something went wrong!' 
+  });
 };
+
 module.exports=errorhandler;
