@@ -297,6 +297,8 @@ const AddBus = () => {
                                 <input 
                                     type="checkbox" 
                                     id='type'
+                                    role='switch'
+                                    className='liquid-3'
                                     checked={type}
                                     onChange={(e)=>setType(e.target.checked)}/>
                         </div>
@@ -305,6 +307,8 @@ const AddBus = () => {
                                 <input 
                                     type="checkbox" 
                                     id='isActive'
+                                    role='switch'
+                                    className='liquid-3'
                                     checked={isActive}
                                     onChange={(e)=>setActive(e.target.checked)}/>
                         </div>

@@ -311,6 +311,8 @@ const EditPage = () => {
                                 <input 
                                     type="checkbox" 
                                     id='type'
+                                    role='switch'
+                                    className='liquid-3'
                                     checked={Type === "permanent"}
                                     onChange={(e) => setType(e.target.checked ? "permanent" : "temporary")}
                                     disabled={loading}
@@ -323,6 +325,8 @@ const EditPage = () => {
                                 <input 
                                     type="checkbox" 
                                     id='isActive'
+                                    role='switch'
+                                    className='liquid-3'
                                     checked={active}
                                     onChange={(e) => setactive(e.target.checked)}
                                     disabled={loading}
