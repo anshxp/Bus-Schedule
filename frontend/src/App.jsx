@@ -9,7 +9,7 @@ import Admin from './Pages/Admin/Admin.jsx'
 import BusRoute from './Pages/BusRoute/BusRoute.jsx';
 import BusIntro from './Components/BusIntro/BusIntro.jsx'; 
 import AddBus from './Pages/AddBus/AddBus.jsx';
-import EditBus from './Pages/EditBus/EditPage.jsx';
+import EditPage from './Pages/EditBus/EditPage.jsx';
 import ProtectedRoute from './Components/routes/ProtectedRoute.jsx';
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
                 } />
               <Route path="/bus/:busNo/editbus" element={
                 <ProtectedRoute>
-                  <EditBus />
+                  <EditPage />
                 </ProtectedRoute>} />
             </Routes>
           </div>

@@ -2,7 +2,6 @@ const jwt=require('jsonwebtoken');
 
 const verifyAdmin=async(req,res,next)=>{
     let token=req.cookies.admintoken || req.headers['token']?.split(" ")[1];
-    console.log(req.headers);
     if (!token && req.cookies?.token) {
         token = req.cookies.token;
     }

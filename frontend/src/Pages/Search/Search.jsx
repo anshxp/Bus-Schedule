@@ -2,7 +2,6 @@ import React, { useEffect, useState,useRef} from "react";
 import { useSearchParams,useNavigate } from "react-router-dom";
 import "./Search.css";
 import Loading from "../../Components/Loading/Loading.jsx";
-import { addRecentBuses } from "../../utills/RecentBuses.js";
 import SingleBus from "../../Components/SingleBus/SingleBus.jsx";
 import RecentBuses from "../../Components/RecentBuses/RecentBuses";
 import { motion } from "framer-motion";
@@ -45,7 +44,20 @@ const Search = () => {
             stop && stop.stopName?.toLowerCase().includes(query.toLowerCase())
           );
           return matchbusNo || matchRoute;
-        });
+        }).map((bus) => {
+          let score = 0;
+          if (bus.busNo.toString().toLowerCase() === query.toLowerCase()) score += 100;
+          else if (bus.busNo.toString().toLowerCase().startsWith(query.toLowerCase())) score += 50;
+          else if (bus.busNo.toString().toLowerCase().includes(query.toLowerCase())) score += 25;
+          if (
+            bus.stops.some((stop) =>
+              stop?.stopName?.toLowerCase().includes(query.toLowerCase())
+            )
+          ) {
+            score += 10;
+          }
+          return {...bus,score}
+        }).sort((a, b) => b.score - a.score); 
         setResults(filtered);
       }
       else{
