@@ -1,5 +1,5 @@
-import React, { useEffect, useState,useRef} from "react";
-import { useSearchParams,useNavigate } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import "./Search.css";
 import Loading from "../../Components/Loading/Loading.jsx";
 import { addRecentBuses } from "../../utills/RecentBuses.js";
@@ -21,6 +21,7 @@ const Search = () => {
     e.preventDefault();
     console.log("Searching for:", query);
   };
+
   useEffect(() => {
     setLoading(true);
     fetch("http://localhost:3000/buses") 
@@ -34,50 +35,56 @@ const Search = () => {
         setLoading(false);
       });
   }, []);
+
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
       if(query.trim()){
-        const filtered=buses.filter(bus=>{
+        const filtered = buses.filter(bus => {
           if(!bus || !bus.busNo || !bus.stops) return false;
           const matchbusNo = bus.busNo.toString().toLowerCase().includes(query.toLowerCase());
           const matchRoute = 
             Array.isArray(bus.stops) && bus.stops.some(stop =>
-            stop && stop.stopName?.toLowerCase().includes(query.toLowerCase())
-          );
+              stop && stop.stopName?.toLowerCase().includes(query.toLowerCase())
+            );
           return matchbusNo || matchRoute;
         });
         setResults(filtered);
-      }
-      else{
+      } else {
         setResults([]);
       }
-    },300);
+    }, 300);
     return () => clearTimeout(delayDebounce);
-  }, [query,buses]);
+  }, [query, buses]);
 
-   useEffect(() => {
-      const q = searchParams.get("q");
-      if (q) {
-        setQuery(q);
-      }
-      inputRef.current?.focus();
-    }, [searchParams]);
-    if (loading) {
-      return(
-          <div className="load">
-              <Loading />
-          </div>
-      ) 
+  useEffect(() => {
+    const q = searchParams.get("q");
+    if (q) {
+      setQuery(q);
     }
+    inputRef.current?.focus();
+  }, [searchParams]);
+
+  if (loading) {
+    return(
+        <div className="load">
+            <Loading />
+        </div>
+    ) 
+  }
 
   return (
     <div className="whole-page">
+      {/* Back Button */}
+      <button className="back-btn" onClick={() => navigate("/")}>
+        ←
+      </button>
+
       <div className="search-page">
         <div className="banner-heading">
-          <h1>Seach Your Bus Route</h1>
+          <h1>Search Your Bus Route</h1>
         </div>
         <div className="banner-subheading">
-            <p>Find your bus route easily</p>   
+          <p>Find your bus route easily</p>   
         </div>
         <form onSubmit={handleSubmit} className="search-form">
           <input
@@ -90,32 +97,35 @@ const Search = () => {
           />
         </form>
       </div>
+
       <div className="search-bus">
         {results.length > 0 && (
           <Stack gap={1} className="search-results">
-            {results.filter(bus=>bus.isActive).map((bus, index) => (
-                <motion.div
-                    className="search-result-item"
-                    key={index}
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y:0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}>
-                <SingleBus 
+            {results.filter(bus => bus.isActive).map((bus, index) => (
+              <motion.div
+                className="search-result-item"
                 key={index}
-                bus={bus}
-                busNumber={bus.busNo}
-                driverName={bus.DriverName}
-                mobile={bus.ContactNo}
-                totalStops={bus.stops.length}
-                stops={bus.stops}
-              />
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y:0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <SingleBus 
+                  key={index}
+                  bus={bus}
+                  busNumber={bus.busNo}
+                  driverName={bus.DriverName}
+                  mobile={bus.ContactNo}
+                  totalStops={bus.stops.length}
+                  stops={bus.stops}
+                />
               </motion.div>
             ))}
           </Stack>
         )}
       </div>
+
       <div className="recent-buses">
-        <RecentBuses></RecentBuses>
+        <RecentBuses />
       </div>
     </div>
   );

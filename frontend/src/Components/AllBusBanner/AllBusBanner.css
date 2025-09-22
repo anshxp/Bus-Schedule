@@ -1,5 +1,5 @@
 .banner{
-    background: linear-gradient(to right, #00062B, #D5D8DD);
+    background: linear-gradient(to right, #00062B, #00062B);
     height: 200px;
     width: 100vw;
 }
@@ -13,7 +13,7 @@
 .banner-subheading p{
     font-size: 1.2rem;
     font-weight: 500;
-    color: #333;
+    color: #ffffff;
     text-align: center;
     margin-top: 10px;
 }

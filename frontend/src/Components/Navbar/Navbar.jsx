@@ -53,14 +53,14 @@ function MyNavbar() {
               to="/"
               className={location.pathname === "/" ? "active-link" : ""}
             >
-              <i className="fa-solid fa-house"></i> Home
+              <i></i>🏠 Home
             </Nav.Link>
             <Nav.Link
               as={Link}
               to="/allbuses"
               className={location.pathname === "/allbuses" ? "active-link" : ""}
             >
-              <i className="fa-solid fa-bus"></i> All Buses
+              <i></i> 🚌 All Buses
             </Nav.Link>
             <Nav.Link
               as={Link}
@@ -68,7 +68,7 @@ function MyNavbar() {
               className={location.pathname === "/search" ? "active-link" : ""}
               onClick={handleSearch}
             >
-              <i className="fa-solid fa-magnifying-glass-location"></i> Search
+              <i></i>🔍 Search
             </Nav.Link>
             <div className="admin-privileges">
               {isAdmin && (

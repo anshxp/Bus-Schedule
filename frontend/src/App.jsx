@@ -1,23 +1,46 @@
-import React, { useEffect,useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar.jsx';
 import Footer from './Components/Footer/Footer.jsx';
 import Search from './Pages/Search/Search.jsx';
 import Home from './Pages/Home/Home.jsx';
 import AllBuses from './Pages/AllBuses/AllBuses.jsx';
-import Admin from './Pages/Admin/Admin.jsx'
+import Admin from './Pages/Admin/Admin.jsx';
 import BusRoute from './Pages/BusRoute/BusRoute.jsx';
-import BusIntro from './Components/BusIntro/BusIntro.jsx'; 
+import BusIntro from './Components/BusIntro/BusIntro.jsx';
 import AddBus from './Pages/AddBus/AddBus.jsx';
 import EditBus from './Pages/EditBus/EditPage.jsx';
 import ProtectedRoute from './Components/routes/ProtectedRoute.jsx';
+
+function BackButtonHandler() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handlePopState = (event) => {
+      if (location.pathname !== "/") {
+        // If not on home, go to home
+        navigate("/", { replace: true });
+      } else {
+        // Already on home → allow normal back (browser default)
+        window.history.go(-1);
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [location, navigate]);
+
+  return null; // This is just a handler, no UI
+}
 
 function App() {
   return (
     <div className="app">
       <BrowserRouter>
+        <BackButtonHandler />
         <div className="page-wrapper">
-          <Navbar/>
+          <Navbar />
           <BusIntro />
           <div className="content">
             <Routes>
@@ -25,17 +48,23 @@ function App() {
               <Route path="/allbuses" element={<AllBuses />} />
               <Route path="/search" element={<Search />} />
               <Route path="/bus/:busNo" element={<BusRoute />} />
-              <Route path="/admin" element={
-                  <Admin />} />
-              <Route path="/addbus" element={
-                <ProtectedRoute>
-                  <AddBus />
+              <Route path="/admin" element={<Admin />} />
+              <Route
+                path="/addbus"
+                element={
+                  <ProtectedRoute>
+                    <AddBus />
                   </ProtectedRoute>
-                } />
-              <Route path="/bus/:busNo/editbus" element={
-                <ProtectedRoute>
-                  <EditBus />
-                </ProtectedRoute>} />
+                }
+              />
+              <Route
+                path="/bus/:busNo/editbus"
+                element={
+                  <ProtectedRoute>
+                    <EditBus />
+                  </ProtectedRoute>
+                }
+              />
             </Routes>
           </div>
           <footer>
@@ -46,6 +75,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

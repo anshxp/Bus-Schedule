@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: linear-gradient(to right, #00062B, #D5D8DD);
+    background: linear-gradient(to right, #00062B, #00062B);
     height: 250px;
     width: 100vw;
 }
