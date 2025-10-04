@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import SingleBus from '../SingleBus/SingleBus';
 import './AllRoute.css';
 import { motion } from 'framer-motion';
+import { addRecentBuses } from '../../utills/RecentBuses';
 
 const AllRoute=({viewtype,setViewType,buses,isAdmin})=>{
     return (

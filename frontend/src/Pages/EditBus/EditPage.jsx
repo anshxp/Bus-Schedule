@@ -72,10 +72,18 @@ const EditPage = () => {
 
         setLoading(true);
         try {
-            const res = await fetch(`http://localhost:3000/admin/${busNo}/editBus`, {
+            const token = localStorage.getItem('admintoken');
+            const headers = {
+                'Content-Type': 'application/json',
+            };
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
+            const res = await fetch(`http://localhost:3000/admin/${busNo}/editbus`, {
                 method: "POST",
                 credentials: "include",
-                headers: { "Content-Type": "application/json" },
+                headers: headers,
                 body: JSON.stringify({
                     busNo: parseInt(busnumber),
                     DriverName: drivername.trim(),

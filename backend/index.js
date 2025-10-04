@@ -30,6 +30,13 @@ app.use((req, res, next) => {
 });
 
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 500,
+  message: "Too many requests from this IP, please try again later"
+});
+app.use(limiter);
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
@@ -38,13 +45,6 @@ app.use(bodyParser.json());
 app.use('/', busrouter);
 app.use('/',authRouter);
 app.use('/admin',adminRoute);
-
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 500,
-  message: "Too many requests from this IP, please try again later"
-});
-app.use(limiter);
 
 app.get("/",(req,res)=>{
     res.send("Welcome to the Bus Schedule API");

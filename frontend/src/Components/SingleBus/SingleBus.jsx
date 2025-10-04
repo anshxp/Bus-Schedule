@@ -22,8 +22,8 @@ const SingleBus=({bus,busNumber,driverName,mobile,totalStops,stops})=>{
                             <div className="total-stops"> <i className="fa-solid fa-location-dot"> </i>{totalStops} Stops</div>
                         </div>
                     </div>
-                    <button className="about-left-part-button">
-                        <p onClick={handleClick}>View Route</p>
+                    <button className="about-left-part-button" onClick={handleClick}>
+                        <p>View Route</p>
                     </button>
                 </div>
             </div>

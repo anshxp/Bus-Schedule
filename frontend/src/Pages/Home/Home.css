@@ -136,17 +136,20 @@
   text-align: center;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 8px 15px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.1);
+  position: relative;
+  z-index: 1;
 }
 
 .stat-card2 {
-  background: linear-gradient(145deg, #5c1116, #8b1c24);
+  background: linear-gradient(145deg, #75161C, #a01f27);
 }
 
 .stat-card h3,
 .stat-card2 h3 {
-  font-size: 1.75rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff !important;
   margin-bottom: 10px;
 }
 
@@ -154,6 +157,7 @@
 .stat-card2 p {
   font-size: 1.2rem;
   font-weight: 600;
+  font-family: 'Poppins', sans-serif;
   color: #ffffff;
 }
 

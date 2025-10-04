@@ -5,12 +5,14 @@ body {
 
 /* Navbar */
 .custom-navbar {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
+              0 2px 8px rgba(0, 0, 0, 0.08);
   padding: 8px 20px;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .custom-navbar .navbar-brand img {
@@ -23,23 +25,27 @@ body {
 }
 
 .custom-navbar .nav-link {
-  color: #000 !important;
+  color: #00062B !important;
   font-weight: 500;
   font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
   margin: 0 14px;
   position: relative;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .custom-navbar .nav-link::after {
   content: "";
   position: absolute;
-  left: 0;
+  left: 50%;
   bottom: -6px;
+  transform: translateX(-50%);
   width: 0%;
-  height: 2px;
-  background: #75161C;
+  height: 3px;
+  background: linear-gradient(90deg, #75161C, #a01f27);
+  border-radius: 2px;
   transition: width 0.3s ease;
+  box-shadow: 0 2px 8px rgba(117, 22, 28, 0.4);
 }
 .btn{
   width: 6rem !important;
@@ -47,6 +53,11 @@ body {
 }
 .custom-navbar .nav-link:hover {
   color: #75161C !important;
+  transform: translateY(-2px);
+}
+
+.custom-navbar .nav-link:hover::after {
+  width: 100%;
 }
 
 .custom-navbar .nav-link:hover::after,
@@ -88,9 +99,81 @@ body {
     background: #fff;
   }
 
+  .custom-navbar .navbar-toggler {
+    margin-left: auto;
+    border: none;
+  }
+  .navbar-toggle-icon{
+    color: #fff !important;
+  }
+
+  .custom-navbar .navbar-collapse {
+    text-align: center;
+  }
+
   .custom-navbar .nav-link {
     text-align: center;
     display: block;
-    margin: 12px 0;
+    margin: 12px auto;
+  }
+
+  .btn {
+    width: auto !important;
+    margin: 10px auto !important;
+    display: block;
+    color: #fff !important;
+  }
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 992px) {
+  .custom-navbar .nav-link {
+    margin: 8px 10px;
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    width: 5rem !important;
+    margin: 0rem 1rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+
+  .custom-navbar {
+    padding: 6px 15px;
+  }
+
+  .custom-navbar .navbar-brand img {
+    height: 35px;
+  }
+
+  .custom-navbar .nav-link {
+    margin: 6px 8px;
+    font-size: 0.9rem;
+  }
+
+  .custom-navbar .nav-link::after {
+    height: 2px;
+  }
+}
+
+@media (max-width: 576px) {
+  .custom-navbar {
+    padding: 8px 12px;
+  }
+
+  .custom-navbar .navbar-brand img {
+    height: 30px;
+  }
+
+  .btn {
+    width: 4rem !important;
+    margin: 0rem 0.5rem !important;
+    padding: 8px 12px !important;
+    font-size: 14px !important;
   }
 }

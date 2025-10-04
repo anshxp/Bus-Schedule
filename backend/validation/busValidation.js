@@ -3,8 +3,8 @@ const joi = require('joi');
 const stopSchema = joi.object({
   _id: joi.string(),
   stopName: joi.string().required(),
-  firstShift: joi.string().required(),
-  secondShift: joi.string().required()
+  firstShift: joi.string().allow('').default(''),
+  secondShift: joi.string().allow('').default('')
 });
 
 const addbusSchema = joi.object({
@@ -13,7 +13,7 @@ const addbusSchema = joi.object({
   ContactNo: joi.number().min(1000000000).max(9999999999).required(),
   type: joi.string().valid('permanent','temporary').required(),
   isActive: joi.boolean().default(true),
-  stops: joi.array().items(stopSchema).required() // ✅ add stops
+  stops: joi.array().items(stopSchema).optional() // ✅ make stops optional for initial creation
 });
 
 const editbusSchema = joi.object({
