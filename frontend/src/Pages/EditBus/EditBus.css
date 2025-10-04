@@ -191,20 +191,32 @@
 .settype {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    justify-content: space-around;
+    gap: 3rem;
+    margin-bottom: 1.5rem;
 }
+
 .type, .isActive {
-    padding: 1rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 1.2rem;
+    gap: 0.75rem;
+}
+
+.type label, .isActive label {
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    color: #00062B;
+    margin: 0;
+    padding: 0;
+    line-height: 26px;
 }
 
 input[type="checkbox"] {
-    transform: scale(0.5);
+    display: block;
+    margin: 0;
+    padding: 0;
+    transform: scale(0.7);
 }
 
 /* Form Action Buttons */
@@ -271,52 +283,55 @@ input[type="checkbox"] {
     width: 100%; /* full width buttons */
   }
 }
-/* Toggle switch CSS for React (corrected) */
+/* Premium modern toggle switch */
 .liquid-3 {
-  --primary: #75161C;
-  --secondary: #fff;
-  --time: 0.5s;
-
   appearance: none;
   position: relative;
   cursor: pointer;
-  width: 5em;
-  aspect-ratio: 2 / 1;
-  background: var(--primary);
-  border-radius: 20em;
-  box-shadow: 0 0 0 0.2em var(--secondary);
-  overflow: hidden;
-  transition: all var(--time) cubic-bezier(0.75, 0, 0.75, 0.5);
+  width: 50px;
+  height: 26px;
+  background: #e5e7eb;
+  border-radius: 13px;
+  border: none;
+  outline: none;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 .liquid-3::before {
   content: "";
   position: absolute;
-  width: 200%;
-  height: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-25%, -50%) scale(1.2); /* bigger when off */
-  background: radial-gradient(
-      closest-side circle at 12.5% 50%,
-      var(--secondary) 50%,
-      #0000 0
-    ),
-    radial-gradient(
-      closest-side circle at 87.5% 50%,
-      var(--secondary) 50%,
-      #0000 0
-    ),
-    #f000;
-  transition: transform var(--time) cubic-bezier(0.75, 0, 0.75, 1.3);
+  width: 20px;
+  height: 20px;
+  left: 3px;
+  top: 3px;
+  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+  border-radius: 50%;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2),
+              0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.liquid-3:checked::before {
-  transform: translate(-75%, -50%) scale(1); /* original size when checked */
+.liquid-3:hover {
+  background: #d1d5db;
 }
 
 .liquid-3:checked {
-  transform: translateX(-0.5px);
+  background: linear-gradient(135deg, #75161C 0%, #8b1e24 100%);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15),
+              0 0 6px rgba(117, 22, 28, 0.25);
+}
+
+.liquid-3:checked::before {
+  transform: translateX(24px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25),
+              0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.liquid-3:focus-visible {
+  outline: 2px solid rgba(117, 22, 28, 0.5);
+  outline-offset: 2px;
 }
 
 

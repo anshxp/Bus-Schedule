@@ -20,7 +20,6 @@ const Search = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Searching for:", query);
   };
 
   useEffect(() => {
@@ -32,7 +31,6 @@ const Search = () => {
         setLoading(false);
       })
       .catch(err => {
-        console.error("Error fetching buses:", err);
         setLoading(false);
       });
   }, []);

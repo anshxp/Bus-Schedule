@@ -22,7 +22,6 @@ const AllBuses = () => {
         setLoading(false);
       })
       .catch(err => {
-        console.error("Error fetching buses:", err);
         setLoading(false);
       });
   }, []);

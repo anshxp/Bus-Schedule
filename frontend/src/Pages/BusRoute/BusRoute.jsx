@@ -16,12 +16,10 @@ const BusRoute=()=>{
         fetch(`http://localhost:3000/buses/${busNo}`)
         .then(res=> res.json())
         .then(data=>{
-            console.log(data);
             setbus(data || []);
             setLoading(false);
         })
         .catch(err => {
-                console.error("Error fetching bus route:", err);
                 setLoading(false);
             });
         }, [busNo])
@@ -33,7 +31,6 @@ const BusRoute=()=>{
         ) 
     }
     if (!bus || !bus.stops) {
-        console.log("No stops found for bus:", busNo);
     }
     return (
         <div className="bus-route-container">

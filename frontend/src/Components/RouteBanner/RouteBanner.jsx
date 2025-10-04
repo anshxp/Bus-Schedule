@@ -14,10 +14,6 @@ const RouteBanner=({busNumber,totalstops,isActive,type})=>{
             return;
         }
         
-        if (!window.confirm(`Are you sure you want to delete Bus G${busNumber}?`)) {
-            return;
-        }
-        
         try{
             const token = localStorage.getItem('admintoken');
             const headers = {
@@ -40,16 +36,10 @@ const RouteBanner=({busNumber,totalstops,isActive,type})=>{
                 recentBuses = recentBuses.filter((bus) => bus.busNo !== parseInt(busNumber));
                 localStorage.setItem("recentBuses", JSON.stringify(recentBuses));
                 
-                console.log("Bus is deleted");
-                alert("Bus deleted successfully!");
                 navigate('/allbuses');
             } else {
-                console.error("Delete failed:", data);
-                alert(data.message || "Failed to delete bus");
             }
         } catch (err) {
-            console.error("Error deleting bus:", err);
-            alert("Error deleting bus");
         }
   }
     return(

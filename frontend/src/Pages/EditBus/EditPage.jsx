@@ -9,18 +9,13 @@ const EditPage = () => {
     const navigate = useNavigate();
     const parsedBusNo = parseInt(busNo);
     if (!busNo || isNaN(parsedBusNo) || parsedBusNo <= 0) {
-        console.error("Invalid bus number:", busNo);
         // Redirect to bus list if invalid bus number
         useEffect(() => {
-            alert("Invalid bus number. Redirecting to bus list.");
             navigate("/allbuses");
         }, [navigate]);
         return <div>Invalid bus number</div>;
     }
     
-    console.log("Valid bus number:", parsedBusNo);
-    
-    console.log(busNo);
     const [busnumber, setbusnumber] = useState(busNo);
     const [drivername, setdrivername] = useState("");
     const [contact, setcontact] = useState("");
@@ -42,23 +37,19 @@ const EditPage = () => {
     const validateForm = () => {
         const busNum = parseInt(busnumber);
         if (!busnumber || isNaN(busNum) || busNum <= 0) {
-            alert("Please enter a valid bus number (must be a positive integer)");
             return false;
         }
 
         if (!drivername || !drivername.trim()) {
-            alert("Please enter a valid driver name");
             return false;
         }
 
         const contactNum = parseInt(contact);
         if (!contact || isNaN(contactNum) || contactNum <= 0) {
-            alert("Please enter a valid contact number (must be a positive integer)");
             return false;
         }
 
         if (contact.toString().length < 10) {
-            alert("Contact number must be at least 10 digits");
             return false;
         }
 
@@ -96,14 +87,10 @@ const EditPage = () => {
 
             const data = await res.json();
             if (res.ok && data.success) {
-                alert("Bus updated successfully ✅");
-                navigate("/allbuses");
+                navigate(`/bus/${busnumber}`);
             } else {
-                alert(data.message || "Failed to update bus ❌");
             }
         } catch (err) {
-            console.error("Error updating bus:", err);
-            alert("Server error ❌");
         } finally {
             setLoading(false);
         }
@@ -121,7 +108,6 @@ const EditPage = () => {
             
             if (res.ok) {
                 const data = await res.json();
-                console.log("Data collected",data);
                 setbusnumber(data.busNo || "");
                 setdrivername(data.DriverName || "");
                 setcontact(data.ContactNo || "");
@@ -129,12 +115,8 @@ const EditPage = () => {
                 setType(data.type || "");
                 setactive(data.isActive || false);
             } else {
-                console.error("Failed to fetch bus data");
-                alert("Failed to load bus data");
             }
         } catch (err) {
-            console.error("Error fetching bus data:", err);
-            alert("Error loading bus data");
         }
     };
 
@@ -262,32 +244,28 @@ const EditPage = () => {
                     
                     <div className="settype">
                         <div className="type">
-                            <label htmlFor="type">
-                                <input 
-                                    type="checkbox" 
-                                    id='type'
-                                    role='switch'
-                                    className='liquid-3'
-                                    checked={Type === "permanent"}
-                                    onChange={(e) => setType(e.target.checked ? "permanent" : "temporary")}
-                                    disabled={loading}
-                                />
-                                Permanent
-                            </label>
+                            <label htmlFor="type">Permanent</label>
+                            <input 
+                                type="checkbox" 
+                                id='type'
+                                role='switch'
+                                className='liquid-3'
+                                checked={Type === "permanent"}
+                                onChange={(e) => setType(e.target.checked ? "permanent" : "temporary")}
+                                disabled={loading}
+                            />
                         </div>
                         <div className="isActive">
-                            <label htmlFor="isActive">
-                                <input 
-                                    type="checkbox" 
-                                    id='isActive'
-                                    role='switch'
-                                    className='liquid-3'
-                                    checked={active}
-                                    onChange={(e) => setactive(e.target.checked)}
-                                    disabled={loading}
-                                />
-                                Active
-                            </label>
+                            <label htmlFor="isActive">Active</label>
+                            <input 
+                                type="checkbox" 
+                                id='isActive'
+                                role='switch'
+                                className='liquid-3'
+                                checked={active}
+                                onChange={(e) => setactive(e.target.checked)}
+                                disabled={loading}
+                            />
                         </div>
                     </div>
 

@@ -43,7 +43,6 @@ export const AuthProvider=({children})=>{
             }
         }
         catch (error) {
-            console.error('Auth check failed:', error);
             localStorage.removeItem('admintoken');
             setAdmin(null);
         } finally {
@@ -70,7 +69,6 @@ export const AuthProvider=({children})=>{
                 return { success: false, message: data.message || 'Login failed' };
             }
         } catch (error) {
-            console.error('Login error:', error);
             return { success: false, message: 'Login failed' };
         }
     };

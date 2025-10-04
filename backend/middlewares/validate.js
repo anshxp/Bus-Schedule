@@ -23,7 +23,6 @@ const validateaddBus=(req,res,next)=>{
 const validateeditBus=(req,res,next)=>{
     const {error}=editbusSchema.validate(req.body);
     if(error){
-        console.log(error);
         return res.status(400).json({ 
             success: false, 
             message: error.details[0].message 

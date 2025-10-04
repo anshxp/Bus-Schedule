@@ -36,26 +36,22 @@ const AddBus = () => {
         // Validate bus number
         const busNumber = parseInt(busNo);
         if (!busNo || isNaN(busNumber) || busNumber <= 0) {
-            alert('Please enter a valid bus number (must be a positive integer)');
             return false;
         }
 
         // Validate driver name
         if (!DriverName || !DriverName.trim()) {
-            alert('Please enter a valid driver name');
             return false;
         }
 
         // Validate contact number
         const contactNumber = parseInt(ContactNo);
         if (!ContactNo || isNaN(contactNumber) || contactNumber <= 0) {
-            alert('Please enter a valid contact number (must be a positive integer)');
             return false;
         }
 
         // Validate contact number length (assuming 10 digits)
         if (ContactNo.toString().length < 10) {
-            alert('Contact number must be at least 10 digits');
             return false;
         }
 
@@ -100,8 +96,6 @@ const AddBus = () => {
         };
 
         try {
-            console.log('Submitting bus data:', busData);
-
             const token = localStorage.getItem('admintoken');
             const headers = {
                 'Content-Type': 'application/json',
@@ -120,28 +114,17 @@ const AddBus = () => {
             try {
                 data = await res.json();
             } catch (parseError) {
-                console.error('Failed to parse response:', parseError);
                 throw new Error('Invalid response from server',parseError);
             }
 
-            console.log('Server response:', data);
-
             if (res.ok && data.success) {
-                console.log('Bus created successfully with stops!');
-                alert('Bus added successfully!');
+                const newBusNumber = busNumber;
                 resetForm();
+                navigate(`/bus/${newBusNumber}`);
             } else {
                 const errorMessage = data.message || data.error || 'Unknown error occurred';
-                console.error('Server error:', errorMessage);
-                alert(`Error: ${errorMessage}`);
             }
         } catch (err) {
-            console.error('Submit error:', err);
-            if (err.name === 'TypeError' && err.message.includes('fetch')) {
-                alert('Unable to connect to server. Please check if the server is running.');
-            } else {
-                alert(`Error: ${err.message}`);
-            }
         } finally {
             setLoading(false);
         }
@@ -275,24 +258,24 @@ const AddBus = () => {
 
                     <div className="settype">
                         <div className="type">
-                            <label htmlFor="type" className='type'>Permanent</label>
-                                <input 
-                                    type="checkbox" 
-                                    id='type'
-                                    role='switch'
-                                    className='liquid-3'
-                                    checked={type}
-                                    onChange={(e)=>setType(e.target.checked)}/>
+                            <label htmlFor="type">Permanent</label>
+                            <input 
+                                type="checkbox" 
+                                id='type'
+                                role='switch'
+                                className='liquid-3'
+                                checked={type}
+                                onChange={(e)=>setType(e.target.checked)}/>
                         </div>
                         <div className="isActive">
-                            <label htmlFor="isActive" className='isActive'>Active</label>
-                                <input 
-                                    type="checkbox" 
-                                    id='isActive'
-                                    role='switch'
-                                    className='liquid-3'
-                                    checked={isActive}
-                                    onChange={(e)=>setActive(e.target.checked)}/>
+                            <label htmlFor="isActive">Active</label>
+                            <input 
+                                type="checkbox" 
+                                id='isActive'
+                                role='switch'
+                                className='liquid-3'
+                                checked={isActive}
+                                onChange={(e)=>setActive(e.target.checked)}/>
                         </div>
                     </div>
 

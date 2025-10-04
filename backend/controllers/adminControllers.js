@@ -92,7 +92,6 @@ const deleteBus=async (req,res)=>{
         const deleteBus=await busModel.findOneAndDelete(
             {busNo:Number(busNo)}
         );
-        console.log("deleted bus :",deleteBus);
         if(!deleteBus){
             return res.json({success:false,message:"Deletion Failed"})
         }
@@ -171,7 +170,6 @@ const deleteStop=async (req,res)=>{
         res.status(404).send({success:true,message:"Stop Removed",bus})
     }
     catch(err){
-        console.log(err);
         return res.status(404).send({message:"Error deleting"})
     }
 }
@@ -199,7 +197,6 @@ const activestatus=async (req,res)=>{
 }
 const verify=(req, res) => {
   try {
-    console.log(req.cookies);
     // get token from cookie or header
     const token = req.cookies?.admintoken || req.headers["authorization"];
 
@@ -223,7 +220,6 @@ const verify=(req, res) => {
       });
     });
   } catch (error) {
-    console.error("Verify error:", error);
     res.status(500).json({ message: "Server error" });
   }
 };
