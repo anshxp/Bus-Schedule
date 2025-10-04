@@ -63,15 +63,15 @@
     font-size: 0.8rem;
 }
 .contact{
-    color: #01062B;
+    color: #F9F9FA;
 }
 .driver-right{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    color: #01062B;
-    background-color: #F9F9FA;
+    color: #F9F9FA;
+    background-color: #F9F9FA !important;
     padding: 5px;
     border:0.8px solid #01062B;
     border-radius: 10px;
@@ -94,6 +94,9 @@
         width: 90vw;
         margin: 10px auto;
         
+    }
+    .driver-main-head{
+        font-size: 1rem !important;
     }
     .driver-head{
         font-size: 1rem;

@@ -21,6 +21,7 @@ export const AuthProvider=({children})=>{
             const token=localStorage.getItem('admintoken');
             if(token){
                 const response=await fetch('http://localhost:3000/admin/verify',{
+                    credentials: 'include',
                     headers:{
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
@@ -28,7 +29,12 @@ export const AuthProvider=({children})=>{
                 });
                 if(response.ok){
                     const data=await response.json();
-                    setAdmin(data.admin);
+                    if(data.success){
+                        setAdmin(data.admin);
+                    } else {
+                        localStorage.removeItem('admintoken');
+                        setAdmin(null);
+                    }
                 }
                 else{
                     localStorage.removeItem('admintoken');
@@ -51,18 +57,20 @@ export const AuthProvider=({children})=>{
                 headers:{
                     'Content-Type':'application/json'
                 },
+                credentials: 'include',
                 body:JSON.stringify({email,password})
             }) ;
             const data = await response.json();
             
-            if (response.ok) {
+            if (data.success && data.token) {
                 localStorage.setItem('admintoken', data.token);
-                setAdmin(data.admin);
+                setAdmin(data.admin || { id: 'admin' });
                 return { success: true };
             } else {
-                return { success: false, message: data.message };
+                return { success: false, message: data.message || 'Login failed' };
             }
         } catch (error) {
+            console.error('Login error:', error);
             return { success: false, message: 'Login failed' };
         }
     };

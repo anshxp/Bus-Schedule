@@ -83,22 +83,36 @@ const AddBus = () => {
         const busNumber = parseInt(busNo);
         const contactNumber = parseInt(ContactNo);
 
+        // Prepare stops data
+        const validStops = stops.filter(stop => stop.stopName && stop.stopName.trim() !== "").map(stop => ({
+            stopName: stop.stopName.trim(),
+            firstShift: stop.firstShift.trim() || "",
+            secondShift: stop.secondShift.trim() || ""
+        }));
+
         const busData = {
             busNo: busNumber,
             DriverName: DriverName.trim(),
             ContactNo: contactNumber,
             type: type ? "permanent" : "temporary",
-            isActive: isActive
+            isActive: isActive,
+            stops: validStops
         };
 
         try {
             console.log('Submitting bus data:', busData);
 
-            const res = await fetch('http://localhost:3000/admin/addBus', {
+            const token = localStorage.getItem('admintoken');
+            const headers = {
+                'Content-Type': 'application/json',
+            };
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
+            const res = await fetch('http://localhost:3000/admin/addbus', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: headers,
                 credentials: 'include',
                 body: JSON.stringify(busData),
             });
@@ -113,39 +127,7 @@ const AddBus = () => {
             console.log('Server response:', data);
 
             if (res.ok && data.success) {
-                console.log('Bus created successfully, adding stops...');
-
-                // Add stops only if bus was created successfully
-                const validStops = stops.filter(stop => stop.stopName && stop.stopName.trim() !== "");
-                
-                if (validStops.length > 0) {
-                    try {
-                        for (const stop of validStops) {
-                            const stopData = {
-                                stopName: stop.stopName.trim(),
-                                firstShift: stop.firstShift.trim() || "",
-                                secondShift: stop.secondShift.trim() || ""
-                            };
-
-                            console.log(`Adding stop: ${stopData.stopName}`);
-
-                            const stopRes = await fetch(`http://localhost:3000/admin/${busNumber}/stops/add`, {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                credentials: 'include',
-                                body: JSON.stringify(stopData),
-                            });
-
-                            if (!stopRes.ok) {
-                                console.warn(`Failed to add stop: ${stopData.stopName}`);
-                            }
-                        }
-                    } catch (stopError) {
-                        console.error('Error adding stops:', stopError);
-                        alert('Bus was created but some stops could not be added. You can add them later.');
-                    }
-                }
-
+                console.log('Bus created successfully with stops!');
                 alert('Bus added successfully!');
                 resetForm();
             } else {

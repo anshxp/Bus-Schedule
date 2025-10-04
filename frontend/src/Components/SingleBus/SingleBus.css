@@ -1,16 +1,45 @@
 .single-bus{
-    background-color: #FEFEFE;
-    border-radius: 30px;
+    background: linear-gradient(135deg, #FEFEFE 0%, #FFFFFF 100%);
+    border-radius: 20px;
     margin: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08),
+                0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.single-bus::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #75161C, #00062B);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.single-bus:hover::before {
+    transform: scaleX(1);
 }
 .single-bus-icon{
-    background-color: #75161C;
-    width: 40px;
-    height: 40px;
+    background: linear-gradient(135deg, #75161C 0%, #a01f27 100%);
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 6px 20px rgba(117, 22, 28, 0.3),
+                0 2px 8px rgba(117, 22, 28, 0.2);
+    transition: all 0.3s ease;
+}
+
+.single-bus:hover .single-bus-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 28px rgba(117, 22, 28, 0.4);
 }
 .actual-icon{
     color:#fff;
@@ -31,26 +60,51 @@
 }
 .busn{
     color: #00062B;
-    font-size: 1.2rem;
-    font-weight: 400;
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
 }
 .total-stops{
-    padding: 0px 8px;
-    padding-left: 10px;
+    padding: 6px 14px;
+    padding-left: 12px;
     border-radius: 20px;
-    background-color: #F9F9FA;
+    background: linear-gradient(135deg, #F9F9FA 0%, #FFFFFF 100%);
     color: #75161C;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 12px rgba(117, 22, 28, 0.15);
+    transition: all 0.3s ease;
+}
+
+.single-bus:hover .total-stops {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(117, 22, 28, 0.2);
 }
 .about-left-part-button{
-    background-color: #F9F9FA;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F9F9FA 100%);
     display: flex;
     color: #00062B;
     align-items: center;
     justify-content: center;
-    padding: 0px 9px;
-    border: 0.5px solid #00062B;
+    padding: 8px 16px;
+    border: 2px solid #00062B;
     border-radius: 20px;
-    height:35px;
+    height: 40px;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 6, 43, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.about-left-part-button:hover {
+    background: linear-gradient(135deg, #00062B 0%, #0a0f2e 100%);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 6, 43, 0.3);
+}
+
+.about-left-part-button:hover p {
+    color: #FFFFFF;
 }
 .about-left-part-button p{
     font-size: 0.75rem;
@@ -59,6 +113,7 @@
     align-items: center;
     color: #000;
     margin-bottom: 0px;
+    pointer-events: none;
 }
 .lower-part{
     padding: 15px;
@@ -67,9 +122,16 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    background-color: #F9F9FA;
-    padding: 9px;
-    border-radius: 20px;
+    background: linear-gradient(135deg, #F9F9FA 0%, #FFFFFF 100%);
+    padding: 12px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.single-bus:hover .about-driver {
+    transform: translateX(5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 .driver-icon{
     font-size:13px;
@@ -86,7 +148,8 @@
 .drivername{
     color: #00062B;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
 }
 .driver-num{
     font-size: 13px;
@@ -178,30 +241,160 @@
     gap: 5px;
 }
 .single-bus {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.059);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   /* existing styles */
 }
 
 .single-bus:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  background-color: #f5f7fa; 
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15),
+              0 8px 16px rgba(0, 0, 0, 0.1);
 }
+
 .single-bus:active {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  background-color: #f5f7fa; 
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 15px 32px rgba(0, 0, 0, 0.12);
 }
 .about-left-part-button:active{
-    background-color: #75161C;
+    background: linear-gradient(135deg, #75161C 0%, #a01f27 100%);
+    border-color: #75161C;
+    transform: translateY(0px);
 }
 .about-left-part-button:active p{
-    color: #F9F9FA;
+    color: #FFFFFF;
 }
 .about-left-part-button:hover{
     background-color: #75161C;
 }
 .about-left-part-button:hover p{
     color: #F9F9FA;
+}
+/* Enhanced Responsive Design */
+@media (max-width: 992px) {
+  .single-bus {
+    margin: 15px;
+  }
+
+  .busn {
+    font-size: 1.2rem;
+  }
+
+  .drivername {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .single-bus {
+    margin: 12px 8px;
+    border-radius: 16px;
+  }
+
+  .single-bus-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .busn {
+    font-size: 1.1rem;
+  }
+
+  .about-left-part-button {
+    padding: 6px 12px;
+    height: 36px;
+  }
+
+  .about-left-part-button p {
+    font-size: 0.7rem;
+  }
+
+  .route-heading {
+    font-size: 0.95rem;
+  }
+
+  .singlebus-stop {
+    padding: 4px 12px;
+  }
+
+  .singlebus-stop-name {
+    font-size: 0.75rem;
+  }
+
+  .timings {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .single-bus {
+    margin: 10px 5px;
+  }
+
+  .about-right-part {
+    gap: 12px;
+  }
+
+  .single-bus-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .actual-icon {
+    font-size: 0.9rem;
+  }
+
+  .busn {
+    font-size: 1rem;
+  }
+
+  .total-stops {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+  }
+
+  .about-driver {
+    padding: 10px;
+  }
+
+  .drivername {
+    font-size: 0.9rem;
+  }
+
+  .driver-num {
+    font-size: 12px;
+  }
+
+  .seperate-line {
+    margin: 5px 20px;
+  }
+
+  .first-stop {
+    margin: 5px 20px;
+  }
+
+  .left-first, .right-second {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .single-bus:hover {
+    transform: translateY(-8px) scale(1.01);
+  }
+
+  .about-bus-parts {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .about-left-part-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .stop-timings {
+    flex-direction: column;
+    gap: 8px;
+  }
 }

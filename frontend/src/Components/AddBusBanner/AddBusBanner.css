@@ -3,9 +3,11 @@
     padding: 0;
     padding-left: 20vw;
     padding-top: 70px;
+    padding-bottom: 30px;
     display: flex;
-    background: linear-gradient(to right, #00062B, #D5D8DD);
-    height: 250px;
+    background: linear-gradient(to right, #00062B, #00062B);
+    min-height: 250px;
+    height: auto;
     width: 100vw;
     flex-direction: column;
 }
@@ -13,7 +15,8 @@
     .AddBus-banner{
         padding-left: 9vw;
         padding-top: 50px;
-        height: 200px;
+        padding-bottom: 20px;
+        min-height: 200px;
     }
 }
 .back-button{

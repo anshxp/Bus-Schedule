@@ -3,7 +3,7 @@ const jwt=require('jsonwebtoken');
 const adminModel = require('../models/adminSchema.js');
 
 const addBus =async(req ,res )=>{
-    const {busNo,DriverName,ContactNo,type,isActive}=req.body;
+    const {busNo,DriverName,ContactNo,type,isActive,stops}=req.body;
     if(!busNo || !DriverName || !ContactNo){
         return res.json({success:false,message:"Incomplete Information"});
     }
@@ -13,7 +13,8 @@ const addBus =async(req ,res )=>{
             DriverName,
             ContactNo,
             type,
-            isActive
+            isActive,
+            stops: stops || []
         });
         await newbus.save();
         return res.json({success:true,bus:newbus});
@@ -81,7 +82,7 @@ const editBus = async (req, res) => {
 
 const deleteBus=async (req,res)=>{
     const {busNo}=req.params;
-    if(!busNo){
+    if(!busNo){ 
         return res.json({
             success:false,
             message:"Bus Number is required"

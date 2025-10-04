@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Loading from "../../Components/Loading/Loading.jsx";
 import './AllBuses.css';
 import AllRoute from "../../Components/AllRoute/AllRoute.jsx";
 import AllBusBanner from "../../Components/AllBusBanner/AllBusBanner.jsx";
+import { useAuth } from "../../Context/AuthContext.jsx";
+
 const AllBuses = () => {
+  const {admin}=useAuth();
   const [viewtype, setViewType] = useState('list');
   const [buses, setBuses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,14 +33,16 @@ const AllBuses = () => {
             <Loading />
         </div>
     ) 
-    }
-  if (!buses.length) return <p>No buses found.</p>;
+  }
+
+  if (!buses.length) return <p className="nobus">No buses found.</p>;
+
   return (
     <>
-    <AllBusBanner />
-    <Container className="mt-5">
-      <AllRoute viewtype={viewtype} setViewType={setViewType} buses={buses}/>
-    </Container>
+      <AllBusBanner />
+      <Container className="mt-5">
+        <AllRoute viewtype={viewtype} setViewType={setViewType} buses={buses} isAdmin={admin}/>
+      </Container>
     </>
   );
 };

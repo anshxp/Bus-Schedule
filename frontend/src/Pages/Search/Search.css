@@ -16,7 +16,7 @@
 .banner-subheading p{
     font-size: 1.2rem;
     font-weight: 500;
-    color: #333;
+    color: #fff;
     text-align: center;
     margin-top: 10px;
 }
@@ -36,6 +36,7 @@
 .search-form {
   display: flex;
   justify-content: center;
+  color: #fff;  
   max-width: 600px;
   margin: 0 auto;
   gap: 0.5rem;
@@ -94,4 +95,18 @@
   .search-results{
     padding:0rem 1rem
   }
+}
+.back-btn {
+  position: absolute;
+  background: #fff;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: #00062B;
 }

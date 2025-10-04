@@ -3,16 +3,24 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
 }
+
 .AddBus-form{
     margin: 3rem 0rem;
     display: flex;
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     align-items: center;
     justify-content: space-around;
-    padding: 2rem 0rem;
+    padding: 3rem 2.5rem;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FEFEFE 100%);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12),
+                0 8px 24px rgba(0, 0, 0, 0.08);
 }
+
 form{
     width: 100%;
 }
@@ -26,26 +34,48 @@ form{
     margin: 1rem 0rem;
 }
 .AddBus-BusInfo-heading{
-    color: #21232C;
-    font-size: 1.55rem;
-    font-weight: 550;
+    color: #00062B;
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding: 10px 0px;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #75161C;
+    padding-bottom: 15px;
 }
 
 label{
-    font-size: 0.9rem;
-    font-weight: 400;
-    padding: 4px 0px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    color: #00062B;
+    padding: 8px 0px;
 }
+
 input{
-    height: 2rem;
-    padding: 5px;
+    height: 2.5rem;
+    padding: 12px 16px;
+    font-family: 'Poppins', sans-serif;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background: #FEFEFE;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
 }
+
+input:focus {
+    border-color: #75161C;
+    box-shadow: 0 0 0 3px rgba(117, 22, 28, 0.1),
+                inset 0 2px 6px rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+}
+
 input::placeholder{
     font-size: 0.9rem;
+    color: #999;
 }
 .AddBus-DriverInfo{
     display: flex;
@@ -56,13 +86,17 @@ input::placeholder{
     margin: 1rem 0rem;
 }
 .AddBus-DriverInfo-heading{
-    font-size: 1.55rem;
-    color:#21232C;
-    font-weight: 550;
+    font-size: 1.6rem;
+    color: #00062B;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding: 10px 0px;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #75161C;
+    padding-bottom: 15px;
 }
 .AddBus-RouteInfo{
     display: flex;
@@ -76,36 +110,55 @@ input::placeholder{
 }
 .AddBus-RouteInfo-heading{
     display: flex;
-    color: #21232C;
-    font-size: 1.55rem;
-    font-weight: 550;
-    display: flex;
+    color: #00062B;
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
     justify-content: space-between;
     align-items: center;
     padding: 10px 0px;
+    margin-bottom: 10px;
+    border-bottom: 3px solid #75161C;
+    padding-bottom: 15px;
 }
+
 .AddStop-button{
     font-size: 0.9rem;
-    padding: 4px;
+    padding: 8px 16px;
     cursor: pointer;
-    font-weight: 400;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
     border-radius: 10px;
-    background-color: #fff;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F9F9FA 100%);
     color: #75161C;
-    border: 0.01px solid #696A71;
+    border: 2px solid #75161C;
+    box-shadow: 0 4px 12px rgba(117, 22, 28, 0.15);
+    transition: all 0.3s ease;
 }
+
 .AddStop-button:hover,.AddStop-button:focus{
-    background-color: #75161C;
+    background: linear-gradient(135deg, #75161C 0%, #a01f27 100%);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(117, 22, 28, 0.3);
 }
 .stop-box{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    border-radius: 20px;
-    border: 1px solid #696A71;
-    padding: 15px;
+    border-radius: 16px;
+    border: 2px solid #e0e0e0;
+    background: linear-gradient(135deg, #FEFEFE 0%, #FFFFFF 100%);
+    padding: 20px;
     margin: 1rem 0rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.stop-box:hover {
+    border-color: #75161C;
+    box-shadow: 0 10px 30px rgba(117, 22, 28, 0.15);
+    transform: translateY(-2px);
 }
 .stop-detail{
     display: flex;
@@ -120,8 +173,10 @@ input::placeholder{
 }
 h3{
     margin: 0px !important;
-    font-size: 1.2rem !important;
-    font-weight: 500 !important;
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+    font-family: 'Poppins', sans-serif !important;
+    color: #00062B !important;
 }
 .stopName{
     margin: 0px;
@@ -133,50 +188,92 @@ h3{
     justify-content: space-between;
 }
 .remove-btn{
-    background-color: #75161C;
+    background: linear-gradient(135deg, #75161C 0%, #a01f27 100%);
     font-size: 1rem;
-    width: 1.5rem;
-    height: 1.7rem;
+    color: white;
+    width: 2rem;
+    height: 2rem;
     padding: 0;
-    border-radius: 5px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
+    box-shadow: 0 4px 12px rgba(117, 22, 28, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(117, 22, 28, 0.4);
 }
 .form-actions{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0rem 1rem;
-    margin: 0rem 1rem;
+    padding: 2rem 0rem 0rem;
+    margin: 2rem 0rem 0rem;
+    gap: 20px;
+    border-top: 2px solid #e0e0e0;
 }
-.submit-btn{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #75161C;
-    border-radius:10px ;
-    padding: 5px 10px;
-}
-.cancel-btn{
-    display:flex;
-    align-items: center;
-    color: black;
-    justify-content: center;
-    background-color: white;
-    border: 1px solid black;
-    border-radius:10px ;
-    padding: 5px 10px;
 
+.submit-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    background: linear-gradient(135deg, #75161C 0%, #a01f27 100%);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(117, 22, 28, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    flex: 1;
 }
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(117, 22, 28, 0.4);
+}
+
+.cancel-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F9F9FA 100%);
+    color: #00062B;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    border: 2px solid #00062B;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 6, 43, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    flex: 1;
+}
+
+.cancel-btn:hover {
+    background: linear-gradient(135deg, #00062B 0%, #0a0f2e 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 6, 43, 0.3);
+}
+
 .settype{
     display: flex;
     align-items: center;
     justify-content: flex-start;
     margin: 0;
     padding: 0;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 2rem;
+    margin: 1.5rem 0rem;
 }
 .type, .isActive{
     padding: 1rem;
@@ -195,52 +292,43 @@ input[type="checkbox"]{
     transform: scale(0.5);
 }
 
-/* Toggle switch CSS for React (corrected) */
+/* Modern toggle switch design */
 .liquid-3 {
-  --primary: #75161C;
-  --secondary: #fff;
-  --time: 0.5s;
-
   appearance: none;
   position: relative;
   cursor: pointer;
-  width: 5em;
-  aspect-ratio: 2 / 1;
-  background: var(--primary);
-  border-radius: 20em;
-  box-shadow: 0 0 0 0.2em var(--secondary);
-  overflow: hidden;
-  transition: all var(--time) cubic-bezier(0.75, 0, 0.75, 0.5);
+  width: 56px;
+  height: 28px;
+  background: #e0e0e0;
+  border-radius: 28px;
+  border: none;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .liquid-3::before {
   content: "";
   position: absolute;
-  width: 200%;
-  height: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-25%, -50%) scale(1.2); /* bigger when off */
-  background: radial-gradient(
-      closest-side circle at 12.5% 50%,
-      var(--secondary) 50%,
-      #0000 0
-    ),
-    radial-gradient(
-      closest-side circle at 87.5% 50%,
-      var(--secondary) 50%,
-      #0000 0
-    ),
-    #f000;
-  transition: transform var(--time) cubic-bezier(0.75, 0, 0.75, 1.3);
-}
-
-.liquid-3:checked::before {
-  transform: translate(-75%, -50%) scale(1); /* original size when checked */
+  width: 22px;
+  height: 22px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .liquid-3:checked {
-  transform: translateX(-0.5px);
+  background: linear-gradient(135deg, #75161C 0%, #a01f27 100%);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2),
+              0 0 12px rgba(117, 22, 28, 0.3);
+}
+
+.liquid-3:checked::before {
+  transform: translateX(28px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 

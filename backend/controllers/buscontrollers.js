@@ -16,24 +16,32 @@ const OneBus= async  (req,res)=>{
     }
     return res.json(bus);
 }
-const searchBuses=(req,res)=>{
+const searchBuses= async (req,res)=>{
     const query=req.query.q.toString().toLowerCase().trim();
     if(!query){
         return res.status(400).json({message:"Query parameter is required"});
     }
-    let result=[];
-    if(/^\d+$/.test(query)){
-        const number = parseInt(query, 10);
-        result = data.filter(bus=>bus.busNo === number);
-    }
-    else{
-        result=data.filter(bus=>
-            bus.stops.some(stop=>stop.stopName.toLowerCase().includes(query))
-        );
+    try{
+        let result=[];
+        if(/^\d+$/.test(query)){
+            const number = parseInt(query, 10);
+            result = await busModel.find({busNo: number});
+        }
+        else{
+            result = await busModel.find({
+                stops: {
+                    $elemMatch: {
+                        stopName: { $regex: query, $options: 'i' }
+                    }
+                }
+            });
+        }
         if(result.length===0){
             return res.status(404).json({message:"No buses found"});
         }
+        return res.json(result);
+    }catch(err){
+        return res.status(500).json({message:"Error searching buses", error: err.message});
     }
-    return result;
 }
 module.exports = { getAllBuses, searchBuses ,OneBus};

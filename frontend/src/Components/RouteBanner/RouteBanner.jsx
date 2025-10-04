@@ -13,30 +13,39 @@ const RouteBanner=({busNumber,totalstops,isActive,type})=>{
         if(!busNumber){
             return;
         }
-        const confirmDelete=window.confirm(`Are you sure you want to delete Bus ${busNumber}?`);
-        if(!confirmDelete){
-            return ;
+        
+        if (!window.confirm(`Are you sure you want to delete Bus G${busNumber}?`)) {
+            return;
         }
+        
         try{
+            const token = localStorage.getItem('admintoken');
+            const headers = {
+                "Content-Type":"application/json",
+            };
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
             const res=await fetch(`http://localhost:3000/admin/${busNumber}`,{
                 method:'DELETE',
-                headers:{
-                    "Content-Type":"application/json",
-                },
+                headers: headers,
                 credentials:"include"
             });
-            let recentBuses = JSON.parse(localStorage.getItem("recentBuses")) || [];
-            recentBuses = recentBuses.filter((bus) => bus._id !== busId);
-            localStorage.setItem("recentBuses", JSON.stringify(recentBuses));
-
-            // ✅ Optionally update state if you store it in React state
-            setRecentBuses(recentBuses);
-         if (res.ok) {
-                navigate('/allbuses')
+            
+            const data = await res.json();
+            
+            if (res.ok && data.success) {
+                let recentBuses = JSON.parse(localStorage.getItem("recentBuses")) || [];
+                recentBuses = recentBuses.filter((bus) => bus.busNo !== parseInt(busNumber));
+                localStorage.setItem("recentBuses", JSON.stringify(recentBuses));
+                
+                console.log("Bus is deleted");
+                alert("Bus deleted successfully!");
+                navigate('/allbuses');
             } else {
-                const errorData = await res.json();
-                console.error("Delete failed:", errorData);
-                alert("Failed to delete bus");
+                console.error("Delete failed:", data);
+                alert(data.message || "Failed to delete bus");
             }
         } catch (err) {
             console.error("Error deleting bus:", err);
