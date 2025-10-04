@@ -1,14 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import "./Search.css";
+import { useAuth } from "../../Context/AuthContext.jsx";
 import Loading from "../../Components/Loading/Loading.jsx";
-import { addRecentBuses } from "../../utills/RecentBuses.js";
 import SingleBus from "../../Components/SingleBus/SingleBus.jsx";
 import RecentBuses from "../../Components/RecentBuses/RecentBuses";
 import { motion } from "framer-motion";
 import { Stack } from "react-bootstrap";
 
 const Search = () => {
+  const {admin}=useAuth();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [searchParams] = useSearchParams();
@@ -47,7 +48,20 @@ const Search = () => {
               stop && stop.stopName?.toLowerCase().includes(query.toLowerCase())
             );
           return matchbusNo || matchRoute;
-        });
+        }).map((bus) => {
+          let score = 0;
+          if (bus.busNo.toString().toLowerCase() === query.toLowerCase()) score += 100;
+          else if (bus.busNo.toString().toLowerCase().startsWith(query.toLowerCase())) score += 50;
+          else if (bus.busNo.toString().toLowerCase().includes(query.toLowerCase())) score += 25;
+          if (
+            bus.stops.some((stop) =>
+              stop?.stopName?.toLowerCase().includes(query.toLowerCase())
+            )
+          ) {
+            score += 10;
+          }
+          return {...bus,score}
+        }).sort((a, b) => b.score - a.score); 
         setResults(filtered);
       } else {
         setResults([]);
@@ -74,11 +88,6 @@ const Search = () => {
 
   return (
     <div className="whole-page">
-      {/* Back Button */}
-      <button className="back-btn" onClick={() => navigate("/")}>
-        ←
-      </button>
-
       <div className="search-page">
         <div className="banner-heading">
           <h1>Search Your Bus Route</h1>
@@ -101,7 +110,7 @@ const Search = () => {
       <div className="search-bus">
         {results.length > 0 && (
           <Stack gap={1} className="search-results">
-            {results.filter(bus => bus.isActive).map((bus, index) => (
+            {(admin ? results:results.filter(bus => bus.isActive)).map((bus, index) => (
               <motion.div
                 className="search-result-item"
                 key={index}

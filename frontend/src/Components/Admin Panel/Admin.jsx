@@ -5,6 +5,7 @@ import { useAuth } from "../../Context/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
 
 const AdminCard = () => {
+  const navigate=useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [email,setemail]=useState("");
   const [password,setpassword]=useState("");
@@ -12,7 +13,6 @@ const AdminCard = () => {
   const [error,setError]=useState("");
 
   const {login}=useAuth();
-  const navigate=useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const AdminCard = () => {
     try {
       const result=await login(email,password);
       if(result.success){
-        navigate('/addbus');
+        navigate('/allbuses');
       }
       else{
         setError(result.message || "Login failed");

@@ -132,10 +132,10 @@
     color: #02ff02;
     border: 1px solid rgb(1, 255, 1);
     display: flex;
+    padding: 2px 10px;
     align-items: center;
     justify-content: center;
     border-radius: 15px;
-    width: 55px;
 }
 .bustype{
     color: #fff;

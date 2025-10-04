@@ -53,14 +53,12 @@ const Footer = () => {
             </a>
           </Col>
 
-          {/* Copyright */}
           <Col md={4} className="text-center-text">
             <p>© 2025 Bus Routes Finder. All Rights Reserved.</p>
           </Col>
         </Row>
       </Container>
 
-      {/* Back to Top Button */}
       <div className="back-to-top" onClick={scrollToTop}>
         <i className="fa-solid fa-arrow-up"></i>
       </div>

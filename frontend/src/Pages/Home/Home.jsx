@@ -33,7 +33,6 @@ const Home = () => {
           </p>
         </div>
 
-        {/* Quick Links Section */}
         <section className="quick-links">
           <h2>Quick Access</h2>
           <div className="links-grid">
@@ -46,7 +45,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Stats Section */}
         <div className="hero-stats">
           <div className="stat-card">
             <h3>80+</h3>
@@ -67,7 +65,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* College Intro Section */}
       <section className="about-section">
         <h2>About Acropolis</h2>
         <p>
@@ -77,7 +74,6 @@ const Home = () => {
         </p>
       </section>
 
-      {/* ===== IMAGE SLIDER SECTION ===== */}
       <section className="slider-section">
         <div className="slider">
           {images.map((img, index) => (
@@ -90,7 +86,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="features-section">
         <h2>Why Choose Our Platform?</h2>
         <p>
@@ -129,17 +124,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Announcements Section */}
-      <section className="notice-section">
-        <h2>Latest Announcements</h2>
-        <ul>
-          <li>📢 Route 5 bus will be delayed by 15 minutes today.</li>
-          <li>📢 New bus added for Beta Nagar students.</li>
-          <li>📢 Shift 2 timings updated for Route 12.</li>
-        </ul>
-      </section>
-
+      
       <div className="top-info-bar">
         <div className="info-item">
           <i className="fas fa-home"></i>

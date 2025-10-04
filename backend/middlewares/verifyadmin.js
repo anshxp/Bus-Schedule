@@ -2,11 +2,10 @@ const jwt=require('jsonwebtoken');
 
 const verifyAdmin=async(req,res,next)=>{
     let token=req.cookies.admintoken || req.headers['token']?.split(" ")[1];
-    console.log(req.headers);
     if (!token && req.cookies?.token) {
         token = req.cookies.token;
     }
-    if(!token) return res.json({success:true,message:"is'nt loggedin"});
+    if(!token) return res.json({success:false,message:"is'nt loggedin"});
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         req.admin = decoded; // attach admin info

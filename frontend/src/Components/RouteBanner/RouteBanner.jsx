@@ -13,10 +13,6 @@ const RouteBanner=({busNumber,totalstops,isActive,type})=>{
         if(!busNumber){
             return;
         }
-        const confirmDelete=window.confirm(`Are you sure you want to delete Bus ${busNumber}?`);
-        if(!confirmDelete){
-            return ;
-        }
         try{
             const res=await fetch(`http://localhost:3000/admin/${busNumber}`,{
                 method:'DELETE',
@@ -26,13 +22,11 @@ const RouteBanner=({busNumber,totalstops,isActive,type})=>{
                 credentials:"include"
             });
             let recentBuses = JSON.parse(localStorage.getItem("recentBuses")) || [];
-            recentBuses = recentBuses.filter((bus) => bus._id !== busId);
+            recentBuses = recentBuses.filter((bus) => bus.busNo !== busNumber);
             localStorage.setItem("recentBuses", JSON.stringify(recentBuses));
-
-            // ✅ Optionally update state if you store it in React state
-            setRecentBuses(recentBuses);
          if (res.ok) {
-                navigate('/allbuses')
+                // navigate('/allbuses');
+                console.log("Bus is deleted");
             } else {
                 const errorData = await res.json();
                 console.error("Delete failed:", errorData);

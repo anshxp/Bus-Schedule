@@ -5,8 +5,10 @@ import Loading from "../../Components/Loading/Loading.jsx";
 import './AllBuses.css';
 import AllRoute from "../../Components/AllRoute/AllRoute.jsx";
 import AllBusBanner from "../../Components/AllBusBanner/AllBusBanner.jsx";
+import { useAuth } from "../../Context/AuthContext.jsx";
 
 const AllBuses = () => {
+  const {admin}=useAuth();
   const [viewtype, setViewType] = useState('list');
   const [buses, setBuses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -33,18 +35,13 @@ const AllBuses = () => {
     ) 
   }
 
-  if (!buses.length) return <p>No buses found.</p>;
+  if (!buses.length) return <p className="nobus">No buses found.</p>;
 
   return (
     <>
-      {/* Back Button */}
-      <button className="back-btn" onClick={() => navigate("/")}>
-        ← 
-      </button>
-
       <AllBusBanner />
       <Container className="mt-5">
-        <AllRoute viewtype={viewtype} setViewType={setViewType} buses={buses}/>
+        <AllRoute viewtype={viewtype} setViewType={setViewType} buses={buses} isAdmin={admin}/>
       </Container>
     </>
   );

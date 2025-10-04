@@ -1,8 +1,12 @@
 .banner{
     background: linear-gradient(to right, #00062B, #00062B);
-    height: 200px;
+    height: 250px;
+    padding: 2rem 20rem;
+    display: flex;
+    flex-direction: column;
     width: 100vw;
 }
+
 .banner-heading h1{
     font-size: 2.5rem;
     color: #fff;

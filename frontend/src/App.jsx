@@ -9,36 +9,14 @@ import Admin from './Pages/Admin/Admin.jsx';
 import BusRoute from './Pages/BusRoute/BusRoute.jsx';
 import BusIntro from './Components/BusIntro/BusIntro.jsx';
 import AddBus from './Pages/AddBus/AddBus.jsx';
-import EditBus from './Pages/EditBus/EditPage.jsx';
+import EditPage from './Pages/EditBus/EditPage.jsx';
 import ProtectedRoute from './Components/routes/ProtectedRoute.jsx';
 
-function BackButtonHandler() {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const handlePopState = (event) => {
-      if (location.pathname !== "/") {
-        // If not on home, go to home
-        navigate("/", { replace: true });
-      } else {
-        // Already on home → allow normal back (browser default)
-        window.history.go(-1);
-      }
-    };
-
-    window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
-  }, [location, navigate]);
-
-  return null; // This is just a handler, no UI
-}
 
 function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        <BackButtonHandler />
         <div className="page-wrapper">
           <Navbar />
           <BusIntro />
@@ -55,21 +33,14 @@ function App() {
                   <ProtectedRoute>
                     <AddBus />
                   </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/bus/:busNo/editbus"
-                element={
-                  <ProtectedRoute>
-                    <EditBus />
-                  </ProtectedRoute>
-                }
-              />
+                } />
+              <Route path="/bus/:busNo/editbus" element={
+                <ProtectedRoute>
+                  <EditPage />
+                </ProtectedRoute>} />
             </Routes>
           </div>
-          <footer>
             <Footer />
-          </footer>
         </div>
       </BrowserRouter>
     </div>

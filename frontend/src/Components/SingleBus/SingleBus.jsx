@@ -60,7 +60,9 @@ const SingleBus=({bus,busNumber,driverName,mobile,totalStops,stops})=>{
                                 </div>
                             ))}
                         <div className="more-buses">
-                            <p>+ {totalStops-3} more steps</p>
+                            {
+                                totalStops > 3 && <p>+ {totalStops-3} more stops</p>
+                            }
                         </div>
                     </div>
                 </div>

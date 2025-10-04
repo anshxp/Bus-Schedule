@@ -81,7 +81,7 @@ const editBus = async (req, res) => {
 
 const deleteBus=async (req,res)=>{
     const {busNo}=req.params;
-    if(!busNo){
+    if(!busNo){ 
         return res.json({
             success:false,
             message:"Bus Number is required"
