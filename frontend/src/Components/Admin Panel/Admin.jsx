@@ -87,7 +87,6 @@ const AdminCard = () => {
           </button>
         </form>
             <div className="login-help">
-              <p className="forgot-password">Forgot your password?</p>
               <p className="help-text">
                 Need help? Contact{" "}
                 <a href="mailto:support@acropolis.edu">support@acropolis.edu</a>
