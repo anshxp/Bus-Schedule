@@ -9,6 +9,7 @@ const authRouter = require("./routes/authRoutes.js");
 const connectDB = require("./data/init.js");
 const cookieParser = require("cookie-parser");
 const adminRoute = require("./routes/adminRoute.js");
+const contactRoutes = require("./routes/contactRoutes.js");
 const errorhandler = require("./middlewares/errorhandler.js");
 const helmet=require('helmet')
 const app=express();
@@ -45,6 +46,7 @@ app.use(bodyParser.json());
 app.use('/', busrouter);
 app.use('/',authRouter);
 app.use('/admin',adminRoute);
+app.use('/api',contactRoutes);
 
 app.get("/",(req,res)=>{
     res.send("Welcome to the Bus Schedule API");

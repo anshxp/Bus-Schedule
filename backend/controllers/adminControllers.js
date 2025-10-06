@@ -174,8 +174,7 @@ const deleteStop=async (req,res)=>{
     }
 }
 
-const activestatus=async (req,res)=>{
-    // const {busNo}=req.params;
+const activestatus=async (req,res)=>{ 
     const {busNo,isActive}=req.body;
     if(typeof isActive!=='boolean') {
         return res.status(404).json({ success: false, message: "isActive must be true or false" });

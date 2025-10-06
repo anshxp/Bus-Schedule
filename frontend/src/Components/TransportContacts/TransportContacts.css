@@ -1,0 +1,368 @@
+.transport-contacts-wrapper {
+  position: relative;
+  margin-left: 0.5rem;
+}
+
+.transport-dial-btn {
+  background: linear-gradient(135deg, #75161C 0%, #a01f27 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(117, 22, 28, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+.dial{
+    transform: rotate(100deg);
+}
+.dial-label {
+  display: none;
+}
+
+.transport-dial-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(117, 22, 28, 0.4);
+  background: linear-gradient(135deg, #8b1e24 0%, #b82530 100%);
+}
+
+.transport-dial-btn:active {
+  transform: translateY(0);
+}
+
+.transport-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1049;
+  animation: fadeIn 0.2s ease;
+}
+
+.transport-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  width: 320px;
+  max-height: 500px;
+  overflow-y: auto;
+  z-index: 1050;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.transport-dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+  background: linear-gradient(135deg, #00062B 0%, #1a1d3a 100%);
+  border-radius: 12px 12px 0 0;
+}
+
+.transport-dropdown-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(90deg);
+}
+
+.transport-contacts-list {
+  padding: 0.5rem;
+}
+
+.loading-contacts,
+.no-contacts {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #666;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+}
+
+.contact-item {
+  padding: 0.75rem;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-item:hover {
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.contact-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #00062B;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-number {
+  font-size: 0.85rem;
+  color: #666;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.call-btn,
+.edit-action-btn,
+.delete-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.call-btn {
+  color: #28a745;
+}
+
+.call-btn:hover {
+  background: #28a74520;
+  transform: scale(1.1);
+}
+
+.edit-action-btn {
+  color: #007bff;
+}
+
+.edit-action-btn:hover {
+  background: #007bff20;
+  transform: scale(1.1);
+}
+
+.delete-btn {
+  color: #dc3545;
+}
+
+.delete-btn:hover {
+  background: #dc354520;
+  transform: scale(1.1);
+}
+
+.edit-form,
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.edit-input,
+.add-input {
+  padding: 0.5rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.2s ease;
+}
+
+.edit-input:focus,
+.add-input:focus {
+  outline: none;
+  border-color: #75161C;
+}
+
+.edit-actions,
+.add-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+}
+
+.save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.cancel-btn {
+  background: #6c757d;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+}
+
+.add-new-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #75161C 0%, #a01f27 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.add-new-btn:hover {
+  background: linear-gradient(135deg, #8b1e24 0%, #b82530 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(117, 22, 28, 0.3);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .transport-contacts-wrapper {
+    width: 80%;
+    margin: 0.5rem auto;
+  }
+
+  .transport-dial-btn {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    padding: 0.5rem 1.25rem;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .dial-label {
+    display: inline;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.3px;
+  }
+
+  .transport-dropdown {
+    width: 280px;
+    right: 10%;
+    left: 10%;
+  }
+
+  .contact-label {
+    font-size: 0.85rem;
+  }
+
+  .contact-number {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .transport-contacts-wrapper {
+    width: 90%;
+    margin: 0.5rem auto;
+  }
+
+  .transport-dial-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .dial-label {
+    font-size: 0.85rem;
+  }
+
+  .transport-dropdown {
+    width: 90vw;
+    right: 5%;
+    left: 5%;
+    max-width: 300px;
+  }
+}

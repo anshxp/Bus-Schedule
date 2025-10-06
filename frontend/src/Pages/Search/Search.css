@@ -60,6 +60,13 @@
   border-radius: 8px;
   font-size: 1rem;
   height: 2.5rem !important;
+  color: #00062B;
+  font-weight: 500;
+}
+
+.search-input-field::placeholder {
+  color: #6c757d;
+  opacity: 0.7;
 }
 
 .search-btn {

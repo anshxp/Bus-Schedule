@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import "./Navbar.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import TransportContacts from "../TransportContacts/TransportContacts";
 
 function MyNavbar() {
   const [expanded, setExpanded] = useState(false);
@@ -72,11 +73,16 @@ function MyNavbar() {
             </Nav.Link>
           </Nav>
           <div className="admin-privileges">
+              <TransportContacts isAdmin={isAdmin} />
               {isAdmin && (
-                <button className='btn ' onClick={()=>navigate('/addbus')}>Add Bus</button>
+                <button className='btn' onClick={()=>navigate('/addbus')}>
+                  <i className="fas fa-plus-circle"></i>Add Bus
+                </button>
               )}
               {isAdmin && (
-                <button className='btn btn-danger' onClick={handleLogout}>Log Out</button>
+                <button className='btn btn-danger' onClick={handleLogout}>
+                  <i className="fas fa-sign-out-alt"></i>Log Out
+                </button>
               )}
           </div>
         </Navbar.Collapse>
