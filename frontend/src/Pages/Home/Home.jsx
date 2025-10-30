@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 
 const images = [
-  "/images/campus1.jpg",
-  "/images/campus2.jpg",
-  "/images/campus3.jpg",
-  "/images/campus4.jpg"
+  "/images/campus1.svg",
+  "/images/campus2.svg",
+  "/images/campus3.svg",
+  "/images/campus4.svg"
 ];
 
 const Home = () => {
