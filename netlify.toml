@@ -2,8 +2,8 @@
   # Build from the frontend subfolder and run the correct build command
   base = "frontend"
   command = "npm run build"
-  # Vite outputs to `dist` by default
-  publish = "frontend/dist"
+  # Vite outputs to `dist` by default when building from the `frontend` base
+  publish = "dist"
 
 # If you prefer to set environment variables here instead of the Netlify UI,
 # you can uncomment and set them below. It's usually better to set secrets
