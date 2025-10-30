@@ -18,9 +18,33 @@ const port=3000;
 
 connectDB();
 
+// Configure CORS to allow local dev, the deployed frontend, and Netlify preview domains.
+// We echo the origin when allowed so Access-Control-Allow-Origin matches the requesting origin
+const allowedOrigins = [
+  process.env.FRONTEND_URL || 'https://bus-schedule-zxsx.onrender.com',
+  'http://localhost:5173',
+  'http://localhost:3000'
+];
+
 app.use(cors({
-  origin:'http://localhost:5173',
-  credentials:true
+  origin: function (origin, callback) {
+    // Allow non-browser requests (like curl, server-side)
+    if (!origin) return callback(null, true);
+
+    // Allow exact matches from the allowedOrigins list
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      return callback(null, true);
+    }
+
+    // Allow Netlify preview subdomains (e.g. https://<hash>--site.netlify.app)
+    if (/\.netlify\.app$/.test(origin)) {
+      return callback(null, true);
+    }
+
+    // Otherwise reject
+    return callback(new Error('CORS policy: origin not allowed'), false);
+  },
+  credentials: true
 }));
 app.use(helmet());
 app.use((req, res, next) => {
