@@ -6,6 +6,7 @@ import { useState,useEffect } from 'react';
 import { motion } from 'framer-motion';
 import DriverInfo from '../../Components/DriverInfo/DriverInfo.jsx';
 import RouteBanner from '../../Components/RouteBanner/RouteBanner.jsx';
+import { API } from '../../utils/api';
 import QuickInfo from '../../Components/QuickInfo/QuickInfo.jsx';
 
 const BusRoute=()=>{
@@ -13,7 +14,7 @@ const BusRoute=()=>{
     const [bus, setbus]= useState(null);
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
-        fetch(`http://localhost:3000/buses/${busNo}`)
+        fetch(`${API}/buses/${busNo}`)
         .then(res=> res.json())
         .then(data=>{
             setbus(data || []);

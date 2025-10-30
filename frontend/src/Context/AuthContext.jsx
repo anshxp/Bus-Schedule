@@ -1,6 +1,7 @@
 import { createContext,useContext,useState,useEffect, Children } from "react";
 
 const AuthContext=createContext();
+import { API } from '../utils/api';
 
 export const useAuth=()=>{
     const context=useContext(AuthContext);
@@ -20,7 +21,7 @@ export const AuthProvider=({children})=>{
         try{
             const token=localStorage.getItem('admintoken');
             if(token){
-                const response=await fetch('http://localhost:3000/admin/verify',{
+                const response=await fetch(`${API}/admin/verify`,{
                     credentials: 'include',
                     headers:{
                         'Authorization': `Bearer ${token}`,
@@ -51,7 +52,7 @@ export const AuthProvider=({children})=>{
     }
     const login=async(email,password)=>{
         try{
-            const response=await fetch('http://localhost:3000/login',{
+            const response=await fetch(`${API}/login`,{
                 method:'POST',
                 headers:{
                     'Content-Type':'application/json'

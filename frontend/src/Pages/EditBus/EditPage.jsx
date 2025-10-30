@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate, redirect } from 'react-router-dom';
 import { FaTrash } from 'react-icons/fa';
 import EditBusBanner from '../../Components/EditBusBanner/EditBusBanner.jsx';
+import { API } from '../../utils/api';
 import './EditBus.css';
 
 const EditPage = () => {
@@ -71,7 +72,7 @@ const EditPage = () => {
                 headers['Authorization'] = `Bearer ${token}`;
             }
 
-            const res = await fetch(`http://localhost:3000/admin/${busNo}/editbus`, {
+            const res = await fetch(`${API}/admin/${busNo}/editbus`, {
                 method: "POST",
                 credentials: "include",
                 headers: headers,
@@ -98,7 +99,7 @@ const EditPage = () => {
 
     const fetchBus = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/buses/${busNo}`, {
+            const res = await fetch(`${API}/buses/${busNo}`, {
                 method: "GET",
                 credentials: "include",
                 headers: {

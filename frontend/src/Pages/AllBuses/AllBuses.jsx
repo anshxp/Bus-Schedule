@@ -5,6 +5,7 @@ import Loading from "../../Components/Loading/Loading.jsx";
 import './AllBuses.css';
 import AllRoute from "../../Components/AllRoute/AllRoute.jsx";
 import AllBusBanner from "../../Components/AllBusBanner/AllBusBanner.jsx";
+import { API } from '../../utils/api';
 import { useAuth } from "../../Context/AuthContext.jsx";
 
 const AllBuses = () => {
@@ -15,7 +16,7 @@ const AllBuses = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:3000/buses") 
+    fetch(`${API}/buses`) 
       .then(res => res.json())
       .then(data => {
         setBuses(data);

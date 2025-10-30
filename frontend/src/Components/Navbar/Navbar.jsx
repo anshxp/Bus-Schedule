@@ -4,6 +4,7 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import "./Navbar.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import TransportContacts from "../TransportContacts/TransportContacts";
+import { API } from '../../utils/api';
 
 function MyNavbar() {
   const [expanded, setExpanded] = useState(false);
@@ -18,7 +19,7 @@ function MyNavbar() {
     navigate("/search");
   };
   const handleLogout=()=>{
-    fetch('http://localhost:3000/logout',{method:"POST",credentials:'include'}).then(()=>{
+    fetch(`${API}/logout`,{method:"POST",credentials:'include'}).then(()=>{
       localStorage.removeItem('admintoken');
       setIsAdmin(false);
       navigate('/');

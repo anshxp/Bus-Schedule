@@ -1,4 +1,5 @@
 import './AddBus.css';
+import { API } from '../../utils/api';
 import AddBusBanner from '../../Components/AddBusBanner/AddBusBanner.jsx';
 import { FaTrash } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
@@ -104,7 +105,7 @@ const AddBus = () => {
                 headers['Authorization'] = `Bearer ${token}`;
             }
 
-            const res = await fetch('http://localhost:3000/admin/addbus', {
+            const res = await fetch(`${API}/admin/addbus`, {
                 method: 'POST',
                 headers: headers,
                 credentials: 'include',

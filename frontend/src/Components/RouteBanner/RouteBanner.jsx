@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react';
 import { MdEdit } from "react-icons/md";
 import { FiTrash2 } from "react-icons/fi";
 import {useNavigate} from "react-router-dom";
+import { API } from '../../utils/api';
 const RouteBanner=({busNumber,totalstops,isActive,type})=>{
     const navigate =useNavigate();
     const [isAdmin,setIsAdmin]=useState(()=>!!localStorage.getItem('admintoken'));
@@ -23,7 +24,7 @@ const RouteBanner=({busNumber,totalstops,isActive,type})=>{
                 headers['Authorization'] = `Bearer ${token}`;
             }
 
-            const res=await fetch(`http://localhost:3000/admin/${busNumber}`,{
+            const res=await fetch(`${API}/admin/${busNumber}`,{
                 method:'DELETE',
                 headers: headers,
                 credentials:"include"

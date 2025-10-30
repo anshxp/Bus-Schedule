@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './TransportContacts.css';
+import { API } from '../../utils/api';
 
 function TransportContacts({ isAdmin }) {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -20,7 +21,7 @@ function TransportContacts({ isAdmin }) {
   const fetchContacts = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:3000/api/contacts');
+  const response = await fetch(`${API}/api/contacts`);
       const data = await response.json();
       if (data.success) {
         setContacts(data.contacts);
@@ -45,7 +46,7 @@ function TransportContacts({ isAdmin }) {
   const handleSaveEdit = async (id) => {
     try {
       const token = localStorage.getItem('admintoken');
-      const response = await fetch(`http://localhost:3000/api/contacts/${id}`, {
+  const response = await fetch(`${API}/api/contacts/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -80,7 +81,7 @@ function TransportContacts({ isAdmin }) {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('admintoken');
-      const response = await fetch(`http://localhost:3000/api/contacts/${id}`, {
+  const response = await fetch(`${API}/api/contacts/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -102,7 +103,7 @@ function TransportContacts({ isAdmin }) {
     if (newNumber && newLabel) {
       try {
         const token = localStorage.getItem('admintoken');
-        const response = await fetch('http://localhost:3000/api/contacts', {
+  const response = await fetch(`${API}/api/contacts`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

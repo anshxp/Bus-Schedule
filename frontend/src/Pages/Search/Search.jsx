@@ -5,6 +5,7 @@ import { useAuth } from "../../Context/AuthContext.jsx";
 import Loading from "../../Components/Loading/Loading.jsx";
 import SingleBus from "../../Components/SingleBus/SingleBus.jsx";
 import RecentBuses from "../../Components/RecentBuses/RecentBuses";
+import { API } from '../../utils/api';
 import { motion } from "framer-motion";
 import { Stack } from "react-bootstrap";
 
@@ -24,7 +25,7 @@ const Search = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3000/buses") 
+    fetch(`${API}/buses`) 
       .then(res => res.json())
       .then(data => {
         setBuses(data);
