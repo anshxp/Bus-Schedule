@@ -46,6 +46,22 @@ app.use(cors({
   },
   credentials: true
 }));
+// Temporary permissive override for public GET endpoints to unblock preview sites.
+// NOTE: This is a short-term workaround. It sets Access-Control-Allow-Origin to '*'
+// for GET requests to `/api/*` and `/buses/*`. Because credentials are disabled
+// for these responses, cookies/auth won't be sent. Remove this once the service
+// is successfully redeployed with the proper CORS configuration.
+app.use((req, res, next) => {
+  try {
+    if (req.method === 'GET' && (req.path.startsWith('/api') || req.path.startsWith('/buses'))) {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Credentials', 'false');
+    }
+  } catch (e) {
+    // ignore
+  }
+  next();
+});
 app.use(helmet());
 app.use((req, res, next) => {
   req.body = mongoSanitize.sanitize(req.body);
