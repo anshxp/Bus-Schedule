@@ -21,7 +21,7 @@ connectDB();
 // Configure CORS to allow local dev, the deployed frontend, and Netlify preview domains.
 // We echo the origin when allowed so Access-Control-Allow-Origin matches the requesting origin
 const allowedOrigins = [
-  process.env.FRONTEND_URL || 'https://bus-schedule-zxsx.onrender.com',
+  process.env.FRONTEND_URL || 'https://soft-mermaid-1d6217.netlify.app',
   'http://localhost:5173',
   'http://localhost:3000'
 ];
