@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import "./Home.css";
 
 const images = [
-  "/images/campus1.svg",
-  "/images/campus2.svg",
-  "/images/campus3.svg",
-  "/images/campus4.svg"
+  "/images/acropolis-indore-campus_large.png",
+  "/images/1744279501php8cQrXn.jpeg",
+  "/images/16553745791933332550630883531818.webp",
+  "/images/building-big-picture.jpg",
 ];
 
 const Home = () => {
